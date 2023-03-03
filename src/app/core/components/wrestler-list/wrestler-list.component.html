@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Debut</th>
+            <th>Height</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container>
+            <tr *ngFor="let wrestler of wrestlers">
+              <td>{{ wrestler.name }}</td>
+              <td>{{ wrestler.debut | date: "shortDate" }}</td>
+              <td>{{ wrestler.height }}</td>
+              <td>{{ wrestler.weight }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>
