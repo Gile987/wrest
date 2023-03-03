@@ -3,18 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { WrestlerListComponent } from './core/components/wrestler-list/wrestler-list.component';
 import { TjpwRosterService } from './core/services/tjpw-roster.service';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { RosterModule } from './features/roster/roster.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WrestlerListComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RosterModule,
+    SharedModule
   ],
   providers: [TjpwRosterService],
   bootstrap: [AppComponent]
