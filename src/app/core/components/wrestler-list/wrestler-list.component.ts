@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Wrestler } from '../../models/wrestler.model';
@@ -10,7 +10,7 @@ import { TjpwRosterService } from '../../services/tjpw-roster.service';
   styleUrls: ['./wrestler-list.component.scss']
 })
 export class WrestlerListComponent implements OnInit, OnDestroy {
-  wrestlers: Wrestler[] = [];
+  @Input() wrestlers: Wrestler[] = [];
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private rosterService: TjpwRosterService) {}

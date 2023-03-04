@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Wrestler } from '../models/wrestler.model';
 
@@ -8,7 +8,7 @@ import { Wrestler } from '../models/wrestler.model';
   providedIn: 'root'
 })
 export class TjpwRosterService {
-  private wrestlersSubject = new Subject<Wrestler[]>();
+  private wrestlersSubject = new BehaviorSubject<Wrestler[]>([]);
   wrestlers$ = this.wrestlersSubject.asObservable();
 
   constructor(private http: HttpClient) {
@@ -29,8 +29,6 @@ export class TjpwRosterService {
       this.wrestlersSubject.next(wrestlers);
     });
   }
-
-
 
   getWrestlerById(id: number): Observable<Wrestler | undefined> {
     return this.wrestlers$.pipe(

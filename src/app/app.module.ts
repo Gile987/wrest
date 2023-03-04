@@ -5,22 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TjpwRosterService } from './core/services/tjpw-roster.service';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { RosterModule } from './features/roster/roster.module';
-import { SharedModule } from './shared/shared.module';
+import { SharedRosterModule } from './shared/shared-roster.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RosterModule,
-    SharedModule
+    SharedRosterModule
   ],
   providers: [TjpwRosterService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
