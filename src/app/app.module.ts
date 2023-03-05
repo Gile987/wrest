@@ -5,7 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TjpwRosterService } from './core/services/tjpw-roster.service';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { SharedRosterModule } from './shared/shared-roster.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { SharedRosterModule } from './shared/modules/shared-roster.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -13,7 +16,10 @@ import { SharedRosterModule } from './shared/shared-roster.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedRosterModule
+    SharedRosterModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [TjpwRosterService],
   bootstrap: [AppComponent]

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WrestlerListComponent } from '../core/components/wrestler-list/wrestler-list.component';
+import { SharedRosterModule } from './modules/shared-roster.module';
 
 @NgModule({
-  declarations: [WrestlerListComponent],
-  imports: [CommonModule],
-  exports: [WrestlerListComponent, CommonModule]
+  declarations: [],
+  imports: [CommonModule, SharedRosterModule],
+  exports: [SharedRosterModule],
 })
 export class SharedModule {}

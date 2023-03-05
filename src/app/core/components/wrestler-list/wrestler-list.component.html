@@ -13,7 +13,7 @@
         <tbody>
           <ng-container>
             <tr *ngFor="let wrestler of wrestlers">
-              <td>{{ wrestler.name }}</td>
+              <td (click)="openWrestlerModal(wrestler)">{{ wrestler.name }}</td>
               <td>{{ wrestler.debut | date: "shortDate" }}</td>
               <td>{{ wrestler.height }}</td>
               <td>{{ wrestler.weight }}</td>
