@@ -21,6 +21,17 @@
       "from": "Kanagawa, Japan",
       "debut": "2014-07-05",
       "specialMoves": ["Dragon Twist", "Dragon Sleeper"]
+    },
+    {
+      "id": 3,
+      "name": "Hyper Misao",
+      "nickname": "The Hyper",
+      "image": "https://example.com/misao.jpg",
+      "height": 160,
+      "weight": 50,
+      "from": "Osaka, Japan",
+      "debut": "2015-07-04",
+      "specialMoves": ["Hyper Bomb", "Hyper Cutter"]
     }
   ]
 }

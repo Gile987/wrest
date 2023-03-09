@@ -1,0 +1,21 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Change this */
+  align-items: center;
+  min-height: 100vh;
+}
+
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.content-container {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Add this */
+  align-items: center; /* Add this */
+}
