@@ -1,7 +1,7 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Change this */
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
 }
@@ -16,6 +16,15 @@ app-header {
 .content-container {
   flex: 1;
   display: flex;
-  justify-content: center; /* Add this */
-  align-items: center; /* Add this */
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.bubble-header-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

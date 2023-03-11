@@ -4,6 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 80%;
+  max-width: 1200px;
 }
 
 .roster-container {
@@ -11,4 +13,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  app-wrestler-list {
+    width: 100%;
+    max-width: 1200px;
+  }
 }

@@ -5,33 +5,77 @@
       "name": "Yuka Sakazaki",
       "nickname": "Magical Girl",
       "image": "https://example.com/sakazaki.jpg",
-      "height": 155,
-      "weight": "",
-      "from": "Tokyo, Japan",
-      "debut": "2013-07-14",
-      "specialMoves": ["Magical Girl Splash", "Magical Merry-Go-Round"]
+      "height": 158,
+      "weight": "?",
+      "from": "South Town",
+      "debut": "2013-01-12",
+      "specialMoves": ["Magical Magical Girl Splash", "Magical Merry-Go-Round", "Tea Time", "Magical Girl Chicken Bastard"]
     },
     {
       "id": 2,
       "name": "Rika Tatsumi",
-      "nickname": "The Dragon",
+      "nickname": "White Dragon",
       "image": "https://example.com/tatsumi.jpg",
       "height": 162,
-      "weight": 60,
+      "weight": "?",
       "from": "Kanagawa, Japan",
-      "debut": "2014-07-05",
-      "specialMoves": ["Dragon Twist", "Dragon Sleeper"]
+      "debut": "2014-01-28",
+      "specialMoves": ["Dragon Twist of Fate", "White Dragon Sleeper", "Missile Hip", "Figure Four Leg Lock"]
     },
     {
       "id": 3,
       "name": "Hyper Misao",
-      "nickname": "The Hyper",
+      "nickname": "Married Hero Who Protects Love and Peace in Tokyo Joshi",
       "image": "https://example.com/misao.jpg",
+      "height": 165,
+      "weight": "?",
+      "from": "Gotham City, North Kanto",
+      "debut": "2015-02-28",
+      "specialMoves": ["I Am a Hero", "Hero Correction System", "Hypami Returns", "Hyper Gotham Crash", "Chickenwing Facelock", "Vanitas"]
+    },
+    {
+      "id": 4,
+      "name": "Mizuki",
+      "nickname": "Popping Sugar Rabbit",
+      "image": "https://example.com/mizuki.jpg",
+      "height": 157,
+      "weight": "?",
+      "from": "Kobe City, Hyogo",
+      "debut": "2012-12-29",
+      "specialMoves": ["Cutie Special", "Aquamarine", "Diving Foot Stomp", "Whirling Candy", "Face Lock"]
+    },
+    {
+      "id": 5,
+      "name": "Harajuku Pom",
+      "nickname": "Harajuku KAWAII Wrestler",
+      "image": "https://example.com/pom.jpg",
+      "height": 163,
+      "weight": "?",
+      "from": "Tokyo",
+      "debut": "2018-12-24",
+      "specialMoves": ["Pom De Justice", "Laforet Harajuku", "Sneak Kick", "Denden Drum", "Kiddy Land"]
+    },
+    {
+      "id": 6,
+      "name": "Suzume",
+      "nickname": "Vivid Honey Mustard",
+      "image": "https://example.com/suzume.jpg",
+      "height": 152,
+      "weight": "?",
+      "from": "Ibaraki",
+      "debut": "2019-08-25",
+      "specialMoves": ["Ring A Bell", "Diving Crossbody", "Twinkle", "Sleeper Hold"]
+    },
+    {
+      "id": 7,
+      "name": "Raku",
+      "nickname": "Raku's Train of the Day",
+      "image": "https://example.com/raku.jpg",
       "height": 160,
-      "weight": 50,
-      "from": "Osaka, Japan",
-      "debut": "2015-07-04",
-      "specialMoves": ["Hyper Bomb", "Hyper Cutter"]
+      "weight": "?",
+      "from": "Ibaraki",
+      "debut": "2018-01-04",
+      "specialMoves": ["Doctor Yellow", "Smile Train", "Goodnight Express", "Kagayaki", "Brain Chop"]
     }
   ]
 }

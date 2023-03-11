@@ -6,17 +6,17 @@
           <tr>
             <th>Name</th>
             <th>Debut</th>
+            <th>From</th>
             <th>Height</th>
-            <th>Weight</th>
           </tr>
         </thead>
         <tbody>
           <ng-container>
-            <tr *ngFor="let wrestler of wrestlers">
-              <td (click)="openWrestlerModal(wrestler)">{{ wrestler.name }}</td>
+            <tr *ngFor="let wrestler of wrestlers" (click)="openWrestlerModal(wrestler)">
+              <td>{{ wrestler.name }}</td>
               <td>{{ wrestler.debut | date: "shortDate" }}</td>
+              <td>{{ wrestler.from }}</td>
               <td>{{ wrestler.height }}</td>
-              <td>{{ wrestler.weight }}</td>
             </tr>
           </ng-container>
         </tbody>
