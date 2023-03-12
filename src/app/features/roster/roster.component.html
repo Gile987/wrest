@@ -1,4 +1,8 @@
 <div class="roster-container">
   <h2>Wrestler Roster</h2>
   <app-wrestler-list [wrestlers]="wrestlers"></app-wrestler-list>
+  <h2>User List</h2>
+  <ul>
+    <li *ngFor="let user of users">{{ user.nickname }}</li>
+  </ul>
 </div>

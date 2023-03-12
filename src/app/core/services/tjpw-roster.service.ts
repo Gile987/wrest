@@ -16,7 +16,7 @@ export class TjpwRosterService {
   }
 
   private loadWrestlers(): void {
-    this.http.get<{wrestlers: Wrestler[]}>("./assets/db.json").pipe(
+    this.http.get<{wrestlers: Wrestler[]}>("./assets/wrestlers.json").pipe(
       catchError(err => {
         console.error('Error loading wrestlers', err);
         return throwError('Unable to load wrestlers');
