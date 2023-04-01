@@ -28,7 +28,7 @@
 }
 
 .header-bubble:nth-child(1) {
-  top: 0;
+  top: -2rem;
   left: 50%;
   transform: translateX(-50%) translateY(-500%);
 }
@@ -52,7 +52,7 @@
 }
 
 .header-bubble:nth-child(5) {
-  top: 50%;
+  top: 3.8rem;
   left: 50%;
   transform: translateX(250%) translateY(350%);
 }

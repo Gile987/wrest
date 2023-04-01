@@ -1,13 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Quicksand&family=Rubik&display=swap');
+@import './styles/variables.scss';
 
+/* Reset styles */
 
 html,
-body {
-  height: 100%;
-}
-body {
+body,
+div,
+span,
+app-root,
+app-small-card {
   margin: 0;
-  font-family: 'Rubik', Roboto, "Helvetica Neue", sans-serif !important;
-  background: linear-gradient(to bottom, #ffd3e0, #b5a2ca);
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Body styles */
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $font-family;
 }
