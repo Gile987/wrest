@@ -1,27 +1,9 @@
 <div class="row">
   <div class="col-12">
-    <div class="table-responsive">
-      <table class="table table-hover table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th>Name</th>
-            <th>Debut</th>
-            <th>From</th>
-            <th>Height</th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container>
-            <tr *ngFor="let wrestler of wrestlers" (click)="openWrestlerModal(wrestler)">
-              <td>{{ wrestler.name }}</td>
-              <td>{{ wrestler.debut | date: "shortDate" }}</td>
-              <td>{{ wrestler.from }}</td>
-              <td>{{ wrestler.height }}</td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-      
+    <div class="d-flex flex-wrap justify-content-center">
+      <div class="col-md-3 col-sm-6 p-2" *ngFor="let wrestler of wrestlers">
+        <app-small-card [wrestler]="wrestler" (click)="openWrestlerModal(wrestler)"></app-small-card>
+      </div>
     </div>
   </div>
 </div>

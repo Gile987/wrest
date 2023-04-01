@@ -29,7 +29,6 @@ export class TjpwRosterService {
       this.wrestlersSubject.next(wrestlers);
     });
   }
-  
 
   getWrestlerById(id: number): Observable<Wrestler | undefined> {
     return this.wrestlers$.pipe(
