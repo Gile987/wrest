@@ -1,7 +1,6 @@
 @import './styles/variables.scss';
 
 /* Reset styles */
-
 html,
 body,
 div,
@@ -18,7 +17,15 @@ app-small-card {
 
 /* Body styles */
 body {
-  background-color: $background-color;
+  background-image: $background-image;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: $text-color;
   font-family: $font-family;
 }
+
+/* Global styles */
+header {
+  margin-top: 4rem;
+}
+
