@@ -5,23 +5,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { TjpwRosterService } from './services/tjpw-roster.service';
 import { UserService } from './services/users.service';
-import { SharedRosterModule } from '../shared/modules/shared-roster.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    SharedRosterModule,
-  ],
   imports: [
     CommonModule,
     HttpClientModule,
-    MatDialogModule
+    SharedModule,
+    MatDialogModule,
   ],
   providers: [
     TjpwRosterService,
     UserService
   ],
-  exports: [
-    SharedRosterModule,
-  ]
 })
 export class CoreModule { }

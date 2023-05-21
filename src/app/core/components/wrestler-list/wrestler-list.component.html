@@ -7,3 +7,9 @@
     </div>
   </div>
 </div>
+<app-paginator
+  [currentPage]="currentPage"
+  [pageSize]="pageSize"
+  [totalItems]="totalItems"
+  (pageChange)="onPageChange($event)"
+></app-paginator>

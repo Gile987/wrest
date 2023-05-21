@@ -1,0 +1,21 @@
+<nav>
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" href="#" (click)="goToPage($event, 1)">First</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" href="#" (click)="goToPage($event, currentPage - 1)">Previous</a>
+      </li>
+      <!-- Loop through the page numbers -->
+      <li class="page-item" *ngFor="let page of getPages()" [class.active]="currentPage === page">
+        <a class="page-link" href="#" (click)="goToPage($event, page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+        <a class="page-link" href="#" (click)="goToPage($event, currentPage + 1)">Next</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+        <a class="page-link" href="#" (click)="goToPage($event, getTotalPages())">Last</a>
+      </li>
+    </ul>
+  </nav>
+  

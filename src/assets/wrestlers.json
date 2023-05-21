@@ -87,6 +87,28 @@
       "from": "Aizu-Wakamatsu",
       "debut": "2021-01-04",
       "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
+    },
+    {
+      "id": 9,
+      "name": "Arisu Endo2",
+      "nickname": "?",
+      "image": "/assets/images/arisu.png",
+      "height": 150,
+      "weight": "?",
+      "from": "Aizu-Wakamatsu",
+      "debut": "2021-01-04",
+      "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
+    },
+    {
+      "id": 10,
+      "name": "Arisu Endo3",
+      "nickname": "?",
+      "image": "/assets/images/arisu.png",
+      "height": 150,
+      "weight": "?",
+      "from": "Aizu-Wakamatsu",
+      "debut": "2021-01-04",
+      "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
     }
   ]
 }
