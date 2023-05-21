@@ -1,15 +1,20 @@
-<div class="row">
-  <div class="col-12">
-    <div class="d-flex flex-wrap justify-content-center">
-      <div class="col-md-3 col-sm-6 p-2" *ngFor="let wrestler of wrestlers">
-        <app-small-card [wrestler]="wrestler" (click)="openWrestlerModal(wrestler)"></app-small-card>
+<div class="list-wrap">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="col-md-3 col-sm-6 p-2" *ngFor="let wrestler of wrestlers">
+          <app-small-card [wrestler]="wrestler" (click)="openWrestlerModal(wrestler)"></app-small-card>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<app-paginator
+
+<div class="paginator-wrap">
+  <app-paginator
   [currentPage]="currentPage"
   [pageSize]="pageSize"
   [totalItems]="totalItems"
   (pageChange)="onPageChange($event)"
 ></app-paginator>
+</div>

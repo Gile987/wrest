@@ -1,3 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  min-height: 34rem;
+  width: 80%;
+}
+
 .row {
   .table-responsive {
     overflow-x: auto;
@@ -47,3 +57,4 @@
     }
   }
 }
+

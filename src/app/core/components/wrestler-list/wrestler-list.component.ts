@@ -15,7 +15,7 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   @Input() wrestlers: Wrestler[] = [];
   @Output() wrestlerSelected = new EventEmitter<Wrestler>();
   currentPage: number = 1;
-  pageSize: number = 4;
+  pageSize: number = 8;
   totalItems: number = 0;
   
   private unsubscribe$: Subject<void> = new Subject();

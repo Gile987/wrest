@@ -6,7 +6,6 @@
       "nickname": "Magical Girl",
       "image": "/assets/images/yuka.png",
       "height": 158,
-      "weight": "?",
       "from": "South Town",
       "debut": "2013-01-12",
       "specialMoves": ["Magical Magical Girl Splash", "Magical Merry-Go-Round", "Tea Time", "Magical Girl Chicken Bastard"]
@@ -17,7 +16,6 @@
       "nickname": "White Dragon",
       "image": "/assets/images/rika.png",
       "height": 162,
-      "weight": "?",
       "from": "Kanagawa, Japan",
       "debut": "2014-01-28",
       "specialMoves": ["Dragon Twist of Fate", "White Dragon Sleeper", "Missile Hip", "Figure Four Leg Lock"]
@@ -28,7 +26,6 @@
       "nickname": "Married Hero Who Protects Love and Peace in Tokyo Joshi",
       "image": "/assets/images/misao.png",
       "height": 165,
-      "weight": "?",
       "from": "Gotham City, North Kanto",
       "debut": "2015-02-28",
       "specialMoves": ["I Am a Hero", "Hero Correction System", "Hypami Returns", "Hyper Gotham Crash", "Chickenwing Facelock", "Vanitas"]
@@ -39,7 +36,6 @@
       "nickname": "Popping Sugar Rabbit",
       "image": "/assets/images/mizuki.png",
       "height": 157,
-      "weight": "?",
       "from": "Kobe City, Hyogo",
       "debut": "2012-12-29",
       "specialMoves": ["Cutie Special", "Aquamarine", "Diving Foot Stomp", "Whirling Candy", "Face Lock"]
@@ -50,7 +46,6 @@
       "nickname": "Harajuku KAWAII Wrestler",
       "image": "/assets/images/pom.png",
       "height": 163,
-      "weight": "?",
       "from": "Tokyo",
       "debut": "2018-12-24",
       "specialMoves": ["Pom De Justice", "Laforet Harajuku", "Sneak Kick", "Denden Drum", "Kiddy Land"]
@@ -61,7 +56,6 @@
       "nickname": "Vivid Honey Mustard",
       "image": "/assets/images/suzume.png",
       "height": 152,
-      "weight": "?",
       "from": "Ibaraki",
       "debut": "2019-08-25",
       "specialMoves": ["Ring A Bell", "Diving Crossbody", "Twinkle", "Sleeper Hold"]
@@ -72,7 +66,6 @@
       "nickname": "Raku's Train of the Day",
       "image": "/assets/images/raku.png",
       "height": 160,
-      "weight": "?",
       "from": "Ibaraki",
       "debut": "2018-01-04",
       "specialMoves": ["Doctor Yellow", "Smile Train", "Goodnight Express", "Kagayaki", "Brain Chop"]
@@ -83,32 +76,29 @@
       "nickname": "?",
       "image": "/assets/images/arisu.png",
       "height": 150,
-      "weight": "?",
       "from": "Aizu-Wakamatsu",
       "debut": "2021-01-04",
       "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
     },
     {
       "id": 9,
-      "name": "Arisu Endo2",
+      "name": "Maki Itoh",
       "nickname": "?",
-      "image": "/assets/images/arisu.png",
-      "height": 150,
-      "weight": "?",
-      "from": "Aizu-Wakamatsu",
-      "debut": "2021-01-04",
-      "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
+      "image": "/assets/images/maki.png",
+      "height": 160,
+      "from": "Fukuoka",
+      "debut": "2016-12-11",
+      "specialMoves": ["CItoh Special", "Itoh Deluxe", "Itoh Punish", "Flying Kokeshi"]
     },
     {
       "id": 10,
-      "name": "Arisu Endo3",
+      "name": "Shoko Nakajima",
       "nickname": "?",
-      "image": "/assets/images/arisu.png",
-      "height": 150,
-      "weight": "?",
-      "from": "Aizu-Wakamatsu",
-      "debut": "2021-01-04",
-      "specialMoves": ["Camel Clutch", "Tsurugajo", "Bandaisan"]
+      "image": "/assets/images/shoko.png",
+      "height": 147,
+      "from": "Niigata",
+      "debut": "2021-08-17",
+      "specialMoves": ["Unmanned Local Train Hold", "Northern Light Suplex Hold", "Rider Kick", "Diving Body Attack", "619"]
     }
   ]
 }
