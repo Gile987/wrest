@@ -13,6 +13,7 @@ app-header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 5;
 }
 
 .content-container {
@@ -22,5 +23,6 @@ app-header {
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  z-index: 1;
 }
 

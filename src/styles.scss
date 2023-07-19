@@ -29,3 +29,14 @@ header {
   margin-top: 4rem;
 }
 
+.wrestler-modal .mat-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mat-dialog-content {
+    max-width: 30rem;
+    max-height: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+}

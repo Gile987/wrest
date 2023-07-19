@@ -48,7 +48,8 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
 
   openWrestlerModal(wrestler: Wrestler) {
     this.dialog.open(WrestlerModalComponent, {
-      data: wrestler
+      data: wrestler,
+      panelClass: 'wrestler-modal'
     });
   }
 
