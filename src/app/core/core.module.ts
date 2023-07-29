@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { TjpwRosterService } from './services/tjpw-roster.service';
-import { UserService } from './services/users.service';
+import { AuthenticationService } from './services/authentication.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     TjpwRosterService,
-    UserService
+    AuthenticationService
   ],
 })
 export class CoreModule { }
