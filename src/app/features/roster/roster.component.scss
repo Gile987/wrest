@@ -1,0 +1,47 @@
+@import '/src/styles/variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 75%;
+  max-width: 75rem;
+  margin-top: 2.7rem;
+}
+
+.roster-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 75rem;
+  min-height: 40rem;
+  margin: 0 auto;
+  padding: 0.8rem;
+  background-color: $primary-gray;
+  opacity: 0.88;
+  box-shadow: 3px 3px rgba(212, 63, 63, 0.2);
+  border-radius: 1rem;
+
+  h1, h2 {
+    margin-bottom: 0.8rem;
+    padding-top: 0.6rem;
+    color: $text-color;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  app-wrestler-list {
+    width: 100%;
+    max-width: 75rem;
+    height: 39rem;
+  }
+}

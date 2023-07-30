@@ -3,24 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { TjpwRosterService } from './core/services/tjpw-roster.service';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { RosterModule } from './features/roster/roster.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RosterModule,
-    SharedModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    SharedModule,
+    FormsModule
   ],
-  providers: [TjpwRosterService],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'styles/variables';
+
+/* Reset styles */
+html,
+body,
+div,
+span,
+app-root,
+app-small-card {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Body styles */
+body {
+  background-image: $background-image;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $text-color;
+  font-family: $font-family;
+}
+
+/* Global styles */
+header {
+  margin-top: 4rem;
+}
+
+.wrestler-modal .mat-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mat-dialog-content {
+    max-width: 30rem;
+    max-height: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+}

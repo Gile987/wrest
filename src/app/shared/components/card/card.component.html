@@ -1,0 +1,14 @@
+<div class="card">
+  <img [src]="wrestler.image" alt="Photo of {{ wrestler.name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ wrestler.name }}</h5>
+    <p class="card-text"><strong>Nickname:</strong> {{ wrestler.nickname }}</p>
+    <p class="card-text"><strong>Height:</strong> {{ wrestler.height }} cm</p>
+    <p class="card-text"><strong>From:</strong> {{ wrestler.from }}</p>
+    <p class="card-text"><strong>Debut:</strong> {{ wrestler.debut | date }}</p>
+    <p class="card-text"><strong>Special Moves:</strong></p>
+    <ul>
+      <li *ngFor="let move of wrestler.specialMoves">{{ move }}</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@import '/src/styles/variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  min-height: 34rem;
+  width: 80%;
+}
+
+.paginator-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 0 1rem;
+  background-color: $primary-purple;
+  opacity: 0.88;
+  box-shadow: 3px 3px rgba(212, 63, 63, 0.2);
+  border-radius: 1rem;
+}

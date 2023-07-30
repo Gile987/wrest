@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RosterComponent } from './roster.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { RosterRoutingModule } from './roster-routing.module';
-
-
+import { SharedModule } from '../../shared/shared.module';
+import { RosterComponent } from './roster.component';
 
 @NgModule({
   declarations: [
-    RosterComponent,
+    RosterComponent
   ],
   imports: [
     CommonModule,
+    RosterRoutingModule,
     SharedModule,
-    RosterRoutingModule
   ],
-  exports: [
-    RosterComponent
-  ]
 })
 export class RosterModule { }
