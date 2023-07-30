@@ -18,5 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     TjpwRosterService,
     AuthenticationService
   ],
+  declarations: [
+  ],
 })
 export class CoreModule { }
