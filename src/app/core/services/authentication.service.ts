@@ -16,6 +16,14 @@ export class AuthenticationService {
     return this.http.get<User[]>(this.usersUrl);
   }
 
+  getCurrentUser(): User | null {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      return JSON.parse(user);
+    }
+    return null;
+  }
+
   login(email: string, password: string): Observable<User | null> {
     return this.http.post<User>(this.usersUrl, { email, password });
   }
@@ -25,7 +33,7 @@ export class AuthenticationService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('user');
+    return !!localStorage.getItem('currentUser');
   }
 
 }
