@@ -24,26 +24,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private loadUsers(): Observable<User[]> {
-    return this.http.get<User[]>('assets/users.json');
-  }
-
   login(): void {
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
-      this.loadUsers().subscribe((users: User[]) => {
-        const user = users.find((u) => u.email === email);
+      this.authService.login(email, password).subscribe((user: User | null) => {
         if (user) {
-          if (user.password === password) {
-            console.log('User logged in');
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.router.navigate(['']);
-          } else {
-            console.log('Wrong password');
-          }
+          console.log('User logged in');
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.router.navigate(['']);
         } else {
-          console.log('User not found');
+          console.log('Wrong email or password');
         }
       });
     }
