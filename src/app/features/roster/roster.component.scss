@@ -45,3 +45,11 @@
     height: 39rem;
   }
 }
+
+@media screen and (max-width: 1078px) {
+  .roster-container {
+    app-wrestler-list {
+      height: 30rem;
+    }
+  }
+}

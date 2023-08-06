@@ -32,3 +32,23 @@
     }
   }
 }
+
+@media screen and (max-width: 1078px) {
+  .card {
+    .card-body {
+      .card-title {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 798px) {
+  .card {
+    height: 18rem;
+    .card-body {
+      .card-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
