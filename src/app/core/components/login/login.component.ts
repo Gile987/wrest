@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   users: User[] = [];
-  isAuthenticated = false;
+  isAuthenticated: Boolean = false;
   private authSubscription: Subscription | undefined;
 
   constructor(
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadUsers();
     this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
-      this.isAuthenticated = !!user;
+      this.isAuthenticated = Boolean(user);
     });
   }
 
@@ -48,10 +48,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(): void {
     if (this.loginForm.valid) {
-      const email = this.loginForm.get('email')?.value;
-      const password = this.loginForm.get('password')?.value;
+      const email: string = this.loginForm.get('email')?.value;
+      const password: string = this.loginForm.get('password')?.value;
 
-      this.authService.authenticateUser(email, password).subscribe((user) => {
+      this.authService.authenticateUser(email, password).subscribe((user: User | null) => {
         if (user) {
           console.log('User logged in');
           this.router.navigate(['']);
