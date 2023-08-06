@@ -15,15 +15,16 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   @Input() wrestlers: Wrestler[] = [];
   @Output() wrestlerSelected = new EventEmitter<Wrestler>();
   currentPage: number = 1;
-  pageSize: number = 8;
   totalItems: number = 0;
-  
+  isMobileView: boolean = false;
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private rosterService: TjpwRosterService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.subscribeToWrestlers();
+    this.updatePageSize();
+    window.addEventListener('resize', () => this.updatePageSize());
   }
 
   ngOnDestroy(): void {
@@ -39,12 +40,12 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
         this.updateWrestlers(wrestlers);
       });
   }
-  
+
   private updateWrestlers(wrestlers: Wrestler[]): void {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
+    const startIndex = (this.currentPage - 1) * this.getPageSizeForCurrentView();
+    const endIndex = startIndex + this.getPageSizeForCurrentView();
     this.wrestlers = wrestlers.slice(startIndex, endIndex);
-  }  
+  }
 
   openWrestlerModal(wrestler: Wrestler) {
     this.dialog.open(WrestlerModalComponent, {
@@ -58,4 +59,11 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
     this.subscribeToWrestlers();
   }
 
+  updatePageSize(): void {
+    this.isMobileView = window.innerWidth < 768;
+  }
+
+  getPageSizeForCurrentView(): number {
+    return this.isMobileView ? 2 : 8;
+  }
 }
