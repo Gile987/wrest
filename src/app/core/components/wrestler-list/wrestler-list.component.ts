@@ -13,11 +13,11 @@ import { WrestlerModalComponent } from 'src/app/features/roster/components/wrest
 })
 export class WrestlerListComponent implements OnInit, OnDestroy {
   @Input() wrestlers: Wrestler[] = [];
-  @Output() wrestlerSelected = new EventEmitter<Wrestler>();
+  @Output() wrestlerSelected: EventEmitter<Wrestler> = new EventEmitter<Wrestler>();
   currentPage: number = 1;
   totalItems: number = 0;
   isMobileView: boolean = false;
-  private unsubscribe$: Subject<void> = new Subject();
+  private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private rosterService: TjpwRosterService, private dialog: MatDialog) {}
 
@@ -35,19 +35,19 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   private subscribeToWrestlers(): void {
     this.rosterService.wrestlers$
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(wrestlers => {
+      .subscribe((wrestlers: Wrestler[]) => {
         this.totalItems = wrestlers.length;
         this.updateWrestlers(wrestlers);
       });
   }
 
   private updateWrestlers(wrestlers: Wrestler[]): void {
-    const startIndex = (this.currentPage - 1) * this.getPageSizeForCurrentView();
-    const endIndex = startIndex + this.getPageSizeForCurrentView();
+    const startIndex: number = (this.currentPage - 1) * this.getPageSizeForCurrentView();
+    const endIndex: number = startIndex + this.getPageSizeForCurrentView();
     this.wrestlers = wrestlers.slice(startIndex, endIndex);
   }
 
-  openWrestlerModal(wrestler: Wrestler) {
+  openWrestlerModal(wrestler: Wrestler): void {
     this.dialog.open(WrestlerModalComponent, {
       data: wrestler,
       panelClass: 'wrestler-modal'

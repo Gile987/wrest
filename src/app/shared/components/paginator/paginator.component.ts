@@ -17,8 +17,8 @@ export class PaginatorComponent implements OnInit {
   }
 
   getPages(): number[] {
-    const totalPages = this.getTotalPages();
-    return Array(totalPages).fill(0).map((_, index) => index + 1);
+    const totalPages: number = this.getTotalPages();
+    return Array(totalPages).fill(0).map((_, index: number): number => index + 1);
   }
 
   goToPage(event: MouseEvent, page: number): void {
