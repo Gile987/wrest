@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user.model';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,12 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  user: User | null = null;
+  user$: Observable<User | null> = null!; 
 
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.updateUser();
+    this.user$ = this.authService.getCurrentUser(); 
   }
 
-  private updateUser(): void {
-    this.user = this.authService.getCurrentUser();
-    console.log(this.user);
-  }
 }

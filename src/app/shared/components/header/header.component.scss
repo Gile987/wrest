@@ -1,9 +1,9 @@
 @import '/src/styles/variables.scss';
 
 header {
-  padding-top: 2rem;
+  padding-top: 1.6rem;
   padding-bottom: 2rem;
-  width: 33.33%;
+  width: 45.33%;
   margin: 0 auto;
   .navbar {
     background-color: $primary-gray!important;
@@ -23,6 +23,7 @@ header {
         font-size: 1.2rem;
         text-transform: uppercase;
         letter-spacing: 0.1rem;
+        cursor: pointer;
         &:hover {
           color: $primary-blue;
         }
