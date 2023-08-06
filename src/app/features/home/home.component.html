@@ -1,4 +1,4 @@
-<div *ngIf="user">
-    Welcome, {{ user.nickname }}!
+<div *ngIf="user$ | async as currentUser">
+  Welcome, {{ currentUser.nickname }}!
 </div>
 <h2>Home</h2>
