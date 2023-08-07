@@ -60,7 +60,7 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   }
 
   updatePageSize(): void {
-    this.isMobileView = window.innerWidth < 768;
+    this.isMobileView = window.innerWidth < 799;
   }
 
   getPageSizeForCurrentView(): number {

@@ -44,11 +44,23 @@
 }
 @media screen and (max-width: 798px) {
   .card {
-    height: 18rem;
+    img {
+      max-width: fit-content;
+    }
+    height: 20rem;
     .card-body {
       .card-title {
         font-size: 1.2rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .card {
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 }
