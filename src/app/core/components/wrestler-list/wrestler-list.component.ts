@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Wrestler } from '../../models/wrestler.model';
@@ -24,7 +24,6 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToWrestlers();
     this.updatePageSize();
-    window.addEventListener('resize', () => this.updatePageSize());
   }
 
   ngOnDestroy(): void {
@@ -57,6 +56,12 @@ export class WrestlerListComponent implements OnInit, OnDestroy {
   onPageChange(page: number): void {
     this.currentPage = page;
     this.subscribeToWrestlers();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.updatePageSize();
+    this.updateWrestlers(this.wrestlers);
   }
 
   updatePageSize(): void {

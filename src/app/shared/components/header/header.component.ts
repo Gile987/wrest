@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
@@ -16,5 +17,6 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.setCurrentUser(null);
+    this.router.navigate(['/login']);
   }
 }
