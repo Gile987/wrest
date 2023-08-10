@@ -8,14 +8,14 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+    return this.authenticationService.isAuthenticated();
   }
 
   logout(): void {
-    this.authService.setCurrentUser(null);
+    this.authenticationService.setCurrentUser(null);
     this.router.navigate(['/login']);
   }
 }

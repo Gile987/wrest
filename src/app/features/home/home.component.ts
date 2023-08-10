@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   user$: Observable<User | null> = null!; 
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.user$ = this.authService.getCurrentUser(); 
+    this.user$ = this.authenticationService.getCurrentUser(); 
   }
 
 }
