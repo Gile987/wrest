@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { User } from '../../models/user.model';
 
@@ -20,13 +20,15 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       nickname: ['', Validators.required]
+    }, {
+      validators: this.passwordsMatchValidator
     });
   }
 
   ngOnInit(): void {}
 
   registerUser(): void {
-    if (this.registrationForm.invalid || this.passwordsDoNotMatch()) {
+    if (this.registrationForm.invalid) {
       return;
     }
 
@@ -40,6 +42,19 @@ export class RegisterComponent implements OnInit {
         }
       }
     );
+  }
+
+  passwordsMatchValidator(control: AbstractControl): { [key: string]: any } | null {
+    const password: string = control.get('password')?.value;
+    const confirmPassword: string = control.get('confirmPassword')?.value;
+    
+    if (password !== confirmPassword) {
+      control.get('confirmPassword')?.setErrors({ passwordsNotMatch: true });
+      return { passwordsNotMatch: true };
+    } else {
+      control.get('confirmPassword')?.setErrors(null);
+      return null;
+    }
   }
 
   passwordsDoNotMatch(): boolean {
