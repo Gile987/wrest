@@ -11,6 +11,7 @@ const routes: Routes = [
       import('./features/roster/roster.module').then((m) => m.RosterModule),
   },
   { path: 'login', loadChildren: () => import('./core/components/login/login.module').then(m => m.LoginModule), canActivate: [UserGuard] },
+  { path: 'register', loadChildren: () => import('./core/components/register/register.module').then(m => m.RegisterModule), canActivate: [UserGuard] },
 ];
 
 @NgModule({

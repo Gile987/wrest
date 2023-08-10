@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthenticationService
+    private authenticationService: AuthenticationService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadUsers();
-    this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
+    this.authSubscription = this.authenticationService.getCurrentUser().subscribe((user) => {
       this.isAuthenticated = Boolean(user);
     });
   }
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private loadUsers(): void {
-    this.authService.getUsers().subscribe((users: User[]) => {
+    this.authenticationService.getUsers().subscribe((users: User[]) => {
       this.users = users;
     });
   }
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       const email: string = this.loginForm.get('email')?.value;
       const password: string = this.loginForm.get('password')?.value;
 
-      this.authService.authenticateUser(email, password).subscribe((user: User | null) => {
+      this.authenticationService.authenticateUser(email, password).subscribe((user: User | null) => {
         if (user) {
           console.log('User logged in');
           this.router.navigate(['']);

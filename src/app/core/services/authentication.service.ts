@@ -46,7 +46,7 @@ export class AuthenticationService {
     return of(user || null);
   }
 
-  register(user: User): Observable<User | null> {
+  registerUser(user: User): Observable<User | null> {
     return this.http.post<User>(this.usersUrl, user);
   }
 
