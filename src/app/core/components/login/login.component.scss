@@ -15,8 +15,23 @@ h2 {
     border-radius: 0.3125rem;
     padding: 1.25rem;
     color: $text-color;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1.25rem;
+
+      a {
+        color: $primary-blue;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          color: $primary-purple;
+        }
+      }
+    }
   }
   
-  mat-form-field {
-    width: 100%;
-  }
