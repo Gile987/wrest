@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, tap, BehaviorSubject } from 'rxjs';
+import { Observable, of, tap, BehaviorSubject, catchError } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -42,12 +42,23 @@ export class AuthenticationService {
 
   authenticateUser(email: string, password: string): Observable<User | null> {
     const user: User | undefined = this.users.find((u: User) => u.email === email && u.password === password);
-    this.setCurrentUser(user || null);
-    return of(user || null);
+
+    if (user) {
+      this.setCurrentUser(user);
+      return of(user);
+    } else {
+      this.setCurrentUser(null);
+      return of(null);
+    }
   }
 
   registerUser(user: User): Observable<User | null> {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>('/api/register', user).pipe(
+      catchError((error: any) => {
+        console.error('Error while registering user:', error);
+        return of(null);
+      })
+    );
   }
 
   isAuthenticated(): boolean {

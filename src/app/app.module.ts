@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './features/home/home.component';
+import { FakeBackendService, fakeBackendProvider } from './core/mock-backend/fake-backend.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent],
@@ -23,7 +24,7 @@ import { HomeComponent } from './features/home/home.component';
     SharedModule,
     FormsModule
   ],
-  providers: [],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
