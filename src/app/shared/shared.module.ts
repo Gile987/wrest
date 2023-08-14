@@ -11,6 +11,7 @@ import { WrestlerListComponent } from 'src/app/core/components/wrestler-list/wre
 import { WrestlerModalComponent } from 'src/app/features/roster/components/wrestler-modal/wrestler-modal.component';
 import { SmallCardComponent } from 'src/app/core/components/wrestler-list/small-card/small-card.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     WrestlerModalComponent,
     SmallCardComponent,
     PaginatorComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    NotFoundComponent,
   ],
 })
 export class SharedModule {}
