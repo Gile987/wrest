@@ -3,9 +3,11 @@
   <li *ngFor="let show of shows">
     <h3>{{ show.name }}</h3>
     <p>Date: {{ show.date }}</p>
-    <p>Lineup:</p>
+    <h4>Matches:</h4>
     <ul>
-      <li *ngFor="let matches of show.lineup">{{ matches }}</li>
+      <li *ngFor="let match of show.matches">
+        {{ match.players.join(' VS ') }}
+      </li>
     </ul>
   </li>
 </ul>
