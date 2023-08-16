@@ -1,0 +1,11 @@
+<h2>Upcoming Shows</h2>
+<ul>
+  <li *ngFor="let show of shows">
+    <h3>{{ show.name }}</h3>
+    <p>Date: {{ show.date }}</p>
+    <p>Lineup:</p>
+    <ul>
+      <li *ngFor="let matches of show.lineup">{{ matches }}</li>
+    </ul>
+  </li>
+</ul>
