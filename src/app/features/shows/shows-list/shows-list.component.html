@@ -1,13 +1,15 @@
-<h2>Upcoming Shows</h2>
-<ul>
-  <li *ngFor="let show of shows">
-    <h3>{{ show.name }}</h3>
-    <p>Date: {{ show.date }}</p>
-    <h4>Matches:</h4>
-    <ul>
-      <li *ngFor="let match of show.matches">
-        {{ match.players.join(' VS ') }}
-      </li>
-    </ul>
-  </li>
-</ul>
+<div class="container">
+  <h2>Upcoming Shows</h2>
+  <ul class="custom-list-group">
+    <li *ngFor="let show of shows" class="list-group-item">
+      <h3>{{ show.name }}</h3>
+      <p>Date: {{ show.date }}</p>
+      <h4>Matches:</h4>
+      <ul class="list-group">
+        <li *ngFor="let match of show.matches" class="list-group-item">
+          {{ match.players.join(' VS ') }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
