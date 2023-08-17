@@ -8,6 +8,21 @@
   color: $text-color;
   border-radius: 0.625rem;
   padding: 1.2rem;
+  max-height: 40rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $primary-purple $primary-blue;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-purple;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $primary-blue;
+  }
 
   h2 {
     text-align: center;
