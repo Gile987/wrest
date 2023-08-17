@@ -50,12 +50,12 @@
 
       .match-container{
         transition: transform 0.2s ease-in-out;
-        padding: 10px; /* Add padding to the container */
+        padding: 10px;
         border: 1px solid $primary-gray;
         border-radius: 5px;
 
         &:hover {
-          transform: scale(1.05); /* Apply the zoom effect */
+          transform: scale(1.05);
         }
       }
 
