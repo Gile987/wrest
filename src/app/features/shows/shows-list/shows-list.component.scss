@@ -24,7 +24,26 @@
       padding-top: 0.8rem;
       background-color: $primary-purple;
       color: $text-color;
-      border-color: $primary-gray;
+
+    }
+    .events {
+      margin-top: 0.6rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .matches {
+
+      .match-container{
+        transition: transform 0.2s ease-in-out;
+        padding: 10px; /* Add padding to the container */
+        border: 1px solid $primary-gray;
+        border-radius: 5px;
+
+        &:hover {
+          transform: scale(1.05); /* Apply the zoom effect */
+        }
+      }
+
     }
   }
 }
