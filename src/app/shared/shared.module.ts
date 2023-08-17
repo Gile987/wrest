@@ -11,7 +11,7 @@ import { WrestlerListComponent } from 'src/app/core/components/wrestler-list/wre
 import { WrestlerModalComponent } from 'src/app/features/roster/components/wrestler-modal/wrestler-modal.component';
 import { SmallCardComponent } from 'src/app/core/components/wrestler-list/small-card/small-card.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [

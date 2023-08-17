@@ -21,7 +21,7 @@ import { HomeComponent } from './features/home/home.component';
     MatDialogModule,
     MatButtonModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,30 @@
+@import '/src/styles/variables.scss';
+
+:host {
+  width: 65%;
+}
+.container {
+  background-color: $primary-gray;
+  color: $text-color;
+  border-radius: 0.625rem;
+  padding: 1.2rem;
+
+  h2 {
+    text-align: center;
+  }
+
+  .custom-list-group {
+    background-color: $primary-purple;
+    text-align: center;
+    padding: 1rem;
+    color: $text-color;
+    border-radius: 0.625rem;
+
+    .list-group-item {
+      padding-top: 0.8rem;
+      background-color: $primary-purple;
+      color: $text-color;
+      border-color: $primary-gray;
+    }
+  }
+}

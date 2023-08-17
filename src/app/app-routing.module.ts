@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { UserGuard } from './core/guards/user.guard';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +13,7 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: () => import('./core/components/login/login.module').then(m => m.LoginModule), canActivate: [UserGuard] },
   { path: 'register', loadChildren: () => import('./core/components/register/register.module').then(m => m.RegisterModule), canActivate: [UserGuard] },
+  { path: 'shows', loadChildren: () => import('./features/shows/shows.module').then(m => m.ShowsModule)},
   { path: '**', component: NotFoundComponent }
 ];
 
