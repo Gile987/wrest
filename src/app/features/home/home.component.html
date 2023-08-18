@@ -1,4 +1,14 @@
-<div *ngIf="user$ | async as currentUser">
-  Welcome, {{ currentUser.nickname }}!
+<div class="container welcome-container">
+  <div class="row">
+    <div class="col-md-12 personalized-welcome" *ngIf="user$ | async as currentUser">
+      <h1>Welcome, {{ currentUser.nickname }}!</h1>
+    </div>
+    <div class="col-md-12 tjpw-message">
+      <h2>Tokyo Joshi Pro Wrestling</h2>
+      <p>Welcome to the fan website of Tokyo Joshi Pro Wrestling. We are thrilled to have you as part of our TJPW community.
+        Here, you'll find the latest news, event updates, and all things TJPW!</p>
+      <p>Whether you're a longtime fan or new to the world of Joshi wrestling, we hope you enjoy exploring our website
+        and staying up-to-date with our exciting matches and roster.</p>
+    </div>
+  </div>
 </div>
-<h2>Home</h2>
