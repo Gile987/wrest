@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { WrestlerListComponent } from 'src/app/core/components/wrestler-list/wrestler-list.component';
@@ -29,6 +30,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatSelectModule,
     ReactiveFormsModule,
   ],
   exports: [
@@ -40,6 +42,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatSelectModule,
     ReactiveFormsModule,
     NotFoundComponent,
   ],

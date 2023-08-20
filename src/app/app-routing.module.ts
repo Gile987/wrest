@@ -15,6 +15,9 @@ const registerLoadChildren = () =>
 const showsLoadChildren = () =>
   import('./features/shows/shows.module').then((m) => m.ShowsModule);
 
+const playLoadChildren = () =>
+  import('./features/play/play.module').then((m) => m.PlayModule);
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'roster', loadChildren: rosterLoadChildren },
@@ -25,6 +28,7 @@ const routes: Routes = [
     canActivate: [UserGuard],
   },
   { path: 'shows', loadChildren: showsLoadChildren },
+  { path: 'play', loadChildren: playLoadChildren },
   { path: '**', component: NotFoundComponent },
 ];
 
