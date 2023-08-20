@@ -1,4 +1,4 @@
-@import '/src/styles/variables.scss';
+@import "/src/styles/variables.scss";
 
 :host {
   width: 65%;
@@ -39,7 +39,6 @@
       padding-top: 0.8rem;
       background-color: $primary-purple;
       color: $text-color;
-
     }
     .events {
       margin-top: 0.6rem;
@@ -47,18 +46,17 @@
     }
 
     .matches {
-
-      .match-container{
+      .match-container {
         transition: transform 0.2s ease-in-out;
         padding: 10px;
         border: 1px solid $primary-gray;
         border-radius: 5px;
+        cursor: default;
 
         &:hover {
           transform: scale(1.05);
         }
       }
-
     }
   }
 }

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-shows-list',
   templateUrl: './shows-list.component.html',
-  styleUrls: ['./shows-list.component.scss']
+  styleUrls: ['./shows-list.component.scss'],
 })
 export class ShowsListComponent implements OnInit {
   shows: any[] = [];
@@ -12,9 +12,12 @@ export class ShowsListComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('./assets/shows.json').subscribe(data => {
+    this.fetchShows();
+  }
+
+  fetchShows(): void {
+    this.http.get<any[]>('./assets/shows.json').subscribe((data) => {
       this.shows = data;
-      console.log(this.shows)
     });
   }
 }

@@ -4,17 +4,28 @@ import { HomeComponent } from './features/home/home.component';
 import { UserGuard } from './core/guards/user.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
+const rosterLoadChildren = () =>
+  import('./features/roster/roster.module').then((m) => m.RosterModule);
+const loginLoadChildren = () =>
+  import('./core/components/login/login.module').then((m) => m.LoginModule);
+const registerLoadChildren = () =>
+  import('./core/components/register/register.module').then(
+    (m) => m.RegisterModule
+  );
+const showsLoadChildren = () =>
+  import('./features/shows/shows.module').then((m) => m.ShowsModule);
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'roster', loadChildren: rosterLoadChildren },
+  { path: 'login', loadChildren: loginLoadChildren, canActivate: [UserGuard] },
   {
-    path: 'roster',
-    loadChildren: () =>
-      import('./features/roster/roster.module').then((m) => m.RosterModule),
+    path: 'register',
+    loadChildren: registerLoadChildren,
+    canActivate: [UserGuard],
   },
-  { path: 'login', loadChildren: () => import('./core/components/login/login.module').then(m => m.LoginModule), canActivate: [UserGuard] },
-  { path: 'register', loadChildren: () => import('./core/components/register/register.module').then(m => m.RegisterModule), canActivate: [UserGuard] },
-  { path: 'shows', loadChildren: () => import('./features/shows/shows.module').then(m => m.ShowsModule)},
-  { path: '**', component: NotFoundComponent }
+  { path: 'shows', loadChildren: showsLoadChildren },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
