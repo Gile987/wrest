@@ -13,6 +13,8 @@ export class TjpwRosterService {
   readonly wrestlers$: Observable<Wrestler[]> =
     this.wrestlersSubject.asObservable();
 
+  private selectedWrestlers: Wrestler[] = [];
+
   constructor(private http: HttpClient) {
     this.loadWrestlers();
   }
@@ -40,8 +42,20 @@ export class TjpwRosterService {
   public getWrestlerById(id: number): Observable<Wrestler | undefined> {
     return this.wrestlers$.pipe(
       map((wrestlers: Wrestler[]) =>
-        wrestlers.find((wrestler) => wrestler.id === id)
+        wrestlers.find((wrestler: Wrestler) => wrestler.id === id)
       )
     );
+  }
+
+  public getAvailableWrestlersForB(): Wrestler[] {
+    return this.wrestlersSubject.value.filter(
+      (wrestler: Wrestler) => !this.selectedWrestlers.includes(wrestler)
+    );
+  }
+
+  public setSelectedWrestler(wrestler: Wrestler): void {
+    if (this.selectedWrestlers.length < 2) {
+      this.selectedWrestlers.push(wrestler);
+    }
   }
 }

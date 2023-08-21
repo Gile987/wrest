@@ -8,30 +8,39 @@ import { Wrestler } from '../../core/models/wrestler.model';
   styleUrls: ['./play.component.scss'],
 })
 export class PlayComponent implements OnInit {
-  wrestlers: Wrestler[] = [];
-  selectedWrestlers: Wrestler[] = [];
+  public wrestlers: Wrestler[] = [];
+  public availableWrestlersForB: Wrestler[] = [];
+  public selectedWrestlers: Wrestler[] = [];
 
   constructor(private rosterService: TjpwRosterService) {}
 
   ngOnInit(): void {
-    this.rosterService.wrestlers$.subscribe((wrestlers) => {
+    this.rosterService.wrestlers$.subscribe((wrestlers: Wrestler[]) => {
       this.wrestlers = wrestlers;
+      this.availableWrestlersForB = [...wrestlers];
     });
   }
 
-  selectWrestler(event: any): void {
-    const wrestlerId = event.target.value;
-    if (wrestlerId) {
-      const selectedWrestler = this.wrestlers.find(
-        (wrestler) => wrestler.id === Number(wrestlerId)
-      );
-      if (selectedWrestler && this.selectedWrestlers.length < 2) {
-        this.selectedWrestlers.push(selectedWrestler);
+  public selectWrestler(wrestlerId: number, wrestlerIndex: number): void {
+    const selectedWrestler: Wrestler | undefined = this.wrestlers.find(
+      (wrestler: Wrestler) => wrestler.id === wrestlerId
+    );
+
+    if (
+      selectedWrestler &&
+      this.selectedWrestlers.length < 2 &&
+      !this.selectedWrestlers.includes(selectedWrestler)
+    ) {
+      this.selectedWrestlers[wrestlerIndex] = selectedWrestler;
+      if (wrestlerIndex === 0) {
+        this.availableWrestlersForB = this.availableWrestlersForB.filter(
+          (wrestler: Wrestler) => wrestler.id !== wrestlerId
+        );
       }
     }
   }
 
-  simulateMatch(): void {
+  public simulateMatch(): void {
     if (this.selectedWrestlers.length === 2) {
     }
   }
