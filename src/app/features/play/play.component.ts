@@ -37,21 +37,26 @@ export class PlayComponent implements OnInit {
       this.availableWrestlersForB = this.wrestlers.filter(
         (wrestler: Wrestler) => wrestler.id !== wrestlerId
       );
-
-      this.selectedWrestlers[1] = null;
     } else if (wrestlerIndex === 1 && this.wrestlerSelectedInColumnA) {
       if (
         selectedWrestler &&
-        this.selectedWrestlers.length < 2 &&
         !this.selectedWrestlers.includes(selectedWrestler)
       ) {
         this.selectedWrestlers[wrestlerIndex] = selectedWrestler;
       }
     }
+    console.log(this.selectedWrestlers);
+  }
+
+  public canSimulateMatch(): boolean {
+    return (
+      this.selectedWrestlers[0] !== null && this.selectedWrestlers[1] !== null
+    );
   }
 
   public simulateMatch(): void {
-    if (this.selectedWrestlers.length === 2) {
+    if (this.canSimulateMatch()) {
+      console.log('Simulating match between:');
     }
   }
 }

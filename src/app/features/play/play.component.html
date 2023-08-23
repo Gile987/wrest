@@ -31,3 +31,7 @@
     </div>
   </div>
 </div>
+
+<button mat-button [disabled]="!canSimulateMatch()" (click)="simulateMatch()">
+  Simulate Match
+</button>
