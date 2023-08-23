@@ -32,20 +32,35 @@ export class PlayComponent implements OnInit {
     );
 
     if (wrestlerIndex === 0) {
-      this.wrestlerSelectedInColumnA = true;
-      this.selectedWrestlers[wrestlerIndex] = selectedWrestler || null;
-      this.availableWrestlersForB = this.wrestlers.filter(
-        (wrestler: Wrestler) => wrestler.id !== wrestlerId
-      );
-    } else if (wrestlerIndex === 1 && this.wrestlerSelectedInColumnA) {
+      this.handleColumnASelection(selectedWrestler);
+    } else if (wrestlerIndex === 1) {
+      this.handleColumnBSelection(selectedWrestler);
+    }
+
+    console.log(this.selectedWrestlers);
+  }
+
+  private handleColumnASelection(selectedWrestler: Wrestler | undefined): void {
+    this.wrestlerSelectedInColumnA = true;
+    this.selectedWrestlers[0] = selectedWrestler || null;
+    this.availableWrestlersForB = this.wrestlers.filter(
+      (wrestler: Wrestler) => wrestler.id !== (selectedWrestler?.id || -1)
+    );
+
+    if (this.selectedWrestlers[1] !== null) {
+      this.selectedWrestlers[1] = null;
+    }
+  }
+
+  private handleColumnBSelection(selectedWrestler: Wrestler | undefined): void {
+    if (this.wrestlerSelectedInColumnA) {
       if (
         selectedWrestler &&
         !this.selectedWrestlers.includes(selectedWrestler)
       ) {
-        this.selectedWrestlers[wrestlerIndex] = selectedWrestler;
+        this.selectedWrestlers[1] = selectedWrestler;
       }
     }
-    console.log(this.selectedWrestlers);
   }
 
   public canSimulateMatch(): boolean {

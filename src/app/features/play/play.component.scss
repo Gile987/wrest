@@ -31,6 +31,17 @@
       }
     }
   }
+
+  button {
+    width: 100%;
+    margin-top: 1.25rem;
+    background-color: $primary-gray;
+    color: $primary-blue;
+    &:hover {
+      background-color: $primary-blue;
+      color: $primary-gray;
+    }
+  }
 }
 
 ::ng-deep .mat-select-value {
