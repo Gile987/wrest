@@ -27,7 +27,7 @@ export class PlayComponent implements OnInit {
   }
 
   public selectWrestler(wrestlerId: number, wrestlerIndex: number): void {
-    const selectedWrestler = this.wrestlers.find(
+    const selectedWrestler: Wrestler | undefined = this.wrestlers.find(
       (wrestler: Wrestler) => wrestler.id === wrestlerId
     );
 
@@ -71,24 +71,28 @@ export class PlayComponent implements OnInit {
 
   public simulateMatch(): void {
     if (this.canSimulateMatch()) {
-      const wrestlerA = this.selectedWrestlers[0];
-      const wrestlerB = this.selectedWrestlers[1];
+      const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
+      const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
       if (wrestlerA && wrestlerB) {
-        const minTurns = 10;
-        const maxTurns = 20;
-        const numTurns =
+        const minTurns: number = 10;
+        const maxTurns: number = 20;
+        const numTurns: number =
           Math.floor(Math.random() * (maxTurns - minTurns + 1)) + minTurns;
 
-        const wrestlingMoves: any[] = [
+        const wrestlingMoves: {
+          name: string;
+          damage: number;
+          accuracy: number;
+        }[] = [
           { name: 'Punch', damage: 10, accuracy: 0.8 },
           { name: 'Kick', damage: 15, accuracy: 0.7 },
         ];
 
-        const simulateTurn = (wrestler: Wrestler, opponent: Wrestler) => {
+        const simulateTurn = (wrestler: Wrestler, opponent: Wrestler): void => {
           const move =
             wrestlingMoves[Math.floor(Math.random() * wrestlingMoves.length)];
-          const shouldPerformAdditionalMove = Math.random() < 0.3;
+          const shouldPerformAdditionalMove: boolean = Math.random() < 0.3;
           if (shouldPerformAdditionalMove) {
             simulateTurn(wrestler, opponent);
           }
@@ -101,15 +105,19 @@ export class PlayComponent implements OnInit {
           simulateTurn(wrestlerA, wrestlerB);
           simulateTurn(wrestlerB, wrestlerA);
         }
-        // prettier-ignore
-        const seniorityFactor = 1 + (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) * 0.05;
-        const seniorityFactorSquared = seniorityFactor * seniorityFactor;
-        const winningProbability =
+
+        const seniorityFactor: number =
+          1 +
+          (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) *
+            0.05;
+        const seniorityFactorSquared: number =
+          seniorityFactor * seniorityFactor;
+        const winningProbability: number =
           seniorityFactorSquared / (1 + seniorityFactorSquared);
-        const winner =
+        const winner: Wrestler =
           Math.random() < winningProbability ? wrestlerA : wrestlerB;
 
-        const specialMove =
+        const specialMove: string =
           winner.specialMoves[
             Math.floor(Math.random() * winner.specialMoves.length)
           ];
