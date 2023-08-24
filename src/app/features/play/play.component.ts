@@ -101,11 +101,17 @@ export class PlayComponent implements OnInit {
           simulateTurn(wrestlerA, wrestlerB);
           simulateTurn(wrestlerB, wrestlerA);
         }
+        // prettier-ignore
+        const seniorityFactor = 1 + (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) * 0.05;
+        const seniorityFactorSquared = seniorityFactor * seniorityFactor;
+        const winningProbability =
+          seniorityFactorSquared / (1 + seniorityFactorSquared);
+        const winner =
+          Math.random() < winningProbability ? wrestlerA : wrestlerB;
 
-        const winner = Math.random() < 0.5 ? wrestlerA : wrestlerB;
         const specialMove =
-          wrestlerA.specialMoves[
-            Math.floor(Math.random() * wrestlerA.specialMoves.length)
+          winner.specialMoves[
+            Math.floor(Math.random() * winner.specialMoves.length)
           ];
         console.log(
           `${winner.name} performs the special move ${specialMove} and wins the match!`
