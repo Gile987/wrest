@@ -75,19 +75,12 @@ export class PlayComponent implements OnInit {
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
       if (wrestlerA && wrestlerB) {
-        const minTurns: number = 10;
-        const maxTurns: number = 20;
-        const numTurns: number =
-          Math.floor(Math.random() * (maxTurns - minTurns + 1)) + minTurns;
-
+        const numTurns: number = this.calculateNumTurns();
         const wrestlingMoves: {
           name: string;
           damage: number;
           accuracy: number;
-        }[] = [
-          { name: 'Punch', damage: 10, accuracy: 0.8 },
-          { name: 'Kick', damage: 15, accuracy: 0.7 },
-        ];
+        }[] = this.getWrestlingMoves();
 
         const simulateTurn = (wrestler: Wrestler, opponent: Wrestler): void => {
           const move =
@@ -106,25 +99,45 @@ export class PlayComponent implements OnInit {
           simulateTurn(wrestlerB, wrestlerA);
         }
 
-        const seniorityFactor: number =
-          1 +
-          (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) *
-            0.05;
-        const seniorityFactorSquared: number =
-          seniorityFactor * seniorityFactor;
-        const winningProbability: number =
-          seniorityFactorSquared / (1 + seniorityFactorSquared);
-        const winner: Wrestler =
-          Math.random() < winningProbability ? wrestlerA : wrestlerB;
-
-        const specialMove: string =
-          winner.specialMoves[
-            Math.floor(Math.random() * winner.specialMoves.length)
-          ];
+        const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
+        const specialMove: string = this.getSpecialMove(winner);
         console.log(
           `${winner.name} performs the special move ${specialMove} and wins the match!`
         );
       }
     }
+  }
+
+  private calculateNumTurns(): number {
+    const minTurns: number = 10;
+    const maxTurns: number = 20;
+    return Math.floor(Math.random() * (maxTurns - minTurns + 1)) + minTurns;
+  }
+
+  private getWrestlingMoves(): {
+    name: string;
+    damage: number;
+    accuracy: number;
+  }[] {
+    return [
+      { name: 'Punch', damage: 10, accuracy: 0.8 },
+      { name: 'Kick', damage: 15, accuracy: 0.7 },
+    ];
+  }
+
+  private calculateWinner(wrestlerA: Wrestler, wrestlerB: Wrestler): Wrestler {
+    const seniorityFactor: number =
+      1 +
+      (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) * 0.05;
+    const seniorityFactorSquared: number = seniorityFactor * seniorityFactor;
+    const winningProbability: number =
+      seniorityFactorSquared / (1 + seniorityFactorSquared);
+    return Math.random() < winningProbability ? wrestlerA : wrestlerB;
+  }
+
+  private getSpecialMove(winner: Wrestler): string {
+    return winner.specialMoves[
+      Math.floor(Math.random() * winner.specialMoves.length)
+    ];
   }
 }
