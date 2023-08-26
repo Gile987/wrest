@@ -38,4 +38,10 @@
   >
     Simulate Match
   </button>
+
+  <div class="simulation-messages">
+    <div *ngFor="let message of simulationMessages" class="message">
+      {{ message }}
+    </div>
+  </div>
 </div>

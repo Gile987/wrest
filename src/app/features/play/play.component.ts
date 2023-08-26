@@ -12,6 +12,7 @@ export class PlayComponent implements OnInit {
   public availableWrestlersForB: Wrestler[] = [];
   public selectedWrestlers: (Wrestler | null)[] = [null, null];
   public wrestlerSelectedInColumnA: boolean = false;
+  public simulationMessages: string[] = [];
 
   constructor(private rosterService: TjpwRosterService) {}
 
@@ -36,8 +37,6 @@ export class PlayComponent implements OnInit {
     } else if (wrestlerIndex === 1) {
       this.handleColumnBSelection(selectedWrestler);
     }
-
-    console.log(this.selectedWrestlers);
   }
 
   private handleColumnASelection(selectedWrestler: Wrestler | undefined): void {
@@ -89,9 +88,8 @@ export class PlayComponent implements OnInit {
           if (shouldPerformAdditionalMove) {
             simulateTurn(wrestler, opponent);
           }
-          console.log(
-            `${wrestler.name} performs ${move.name} on ${opponent.name}`
-          );
+          const message = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
+          this.simulationMessages.push(message);
         };
 
         for (let i = 0; i < numTurns; i++) {
@@ -101,9 +99,8 @@ export class PlayComponent implements OnInit {
 
         const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
         const specialMove: string = this.getSpecialMove(winner);
-        console.log(
-          `${winner.name} performs the special move ${specialMove} and wins the match!`
-        );
+        const winningMessage = `${winner.name} performs the special move ${specialMove} and wins the match!`;
+        this.simulationMessages.push(winningMessage);
       }
     }
   }
