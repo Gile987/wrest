@@ -69,6 +69,7 @@ export class PlayComponent implements OnInit {
   }
 
   public simulateMatch(): void {
+    this.simulationMessages = [];
     if (this.canSimulateMatch()) {
       const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
