@@ -81,26 +81,37 @@ export class PlayComponent implements OnInit {
           accuracy: number;
         }[] = this.getWrestlingMoves();
 
-        const simulateTurn = (wrestler: Wrestler, opponent: Wrestler): void => {
-          const move =
-            wrestlingMoves[Math.floor(Math.random() * wrestlingMoves.length)];
-          const shouldPerformAdditionalMove: boolean = Math.random() < 0.3;
-          if (shouldPerformAdditionalMove) {
-            simulateTurn(wrestler, opponent);
+        const simulateTurn = (
+          wrestler: Wrestler,
+          opponent: Wrestler,
+          index: number
+        ): void => {
+          if (index < numTurns) {
+            const move =
+              wrestlingMoves[Math.floor(Math.random() * wrestlingMoves.length)];
+            const shouldPerformAdditionalMove: boolean = Math.random() < 0.3;
+
+            const message: string = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
+            this.simulationMessages.push(message);
+
+            if (shouldPerformAdditionalMove) {
+              setTimeout(() => {
+                simulateTurn(wrestler, opponent, index + 1);
+              }, 500);
+            } else {
+              setTimeout(() => {
+                simulateTurn(opponent, wrestler, index + 1);
+              }, 500);
+            }
+          } else {
+            const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
+            const specialMove: string = this.getSpecialMove(winner);
+            const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
+            this.simulationMessages.push(winningMessage);
           }
-          const message = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
-          this.simulationMessages.push(message);
         };
 
-        for (let i = 0; i < numTurns; i++) {
-          simulateTurn(wrestlerA, wrestlerB);
-          simulateTurn(wrestlerB, wrestlerA);
-        }
-
-        const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
-        const specialMove: string = this.getSpecialMove(winner);
-        const winningMessage = `${winner.name} performs the special move ${specialMove} and wins the match!`;
-        this.simulationMessages.push(winningMessage);
+        simulateTurn(wrestlerA, wrestlerB, 0);
       }
     }
   }
