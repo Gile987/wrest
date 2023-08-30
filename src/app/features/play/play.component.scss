@@ -64,6 +64,31 @@
     .message {
       margin-bottom: 0.5rem;
     }
+
+    .winner-info {
+      margin-top: 1.25rem;
+      padding: 0.625rem;
+      border: 2px solid $primary-gray;
+      border-radius: 0.3125rem;
+      background-color: $primary-purple;
+
+      .winner-details {
+        display: flex;
+        align-items: center;
+        .winner-image {
+          width: 6.25rem;
+          height: 6.25rem;
+          border-radius: 50%;
+          margin-right: 0.625rem;
+        }
+
+        p {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: $text-color;
+        }
+      }
+    }
   }
 }
 

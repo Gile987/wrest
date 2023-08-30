@@ -13,6 +13,7 @@ export class PlayComponent implements OnInit {
   public selectedWrestlers: (Wrestler | null)[] = [null, null];
   public wrestlerSelectedInColumnA: boolean = false;
   public simulationMessages: string[] = [];
+  public winner: Wrestler | null = null;
 
   constructor(private rosterService: TjpwRosterService) {}
 
@@ -71,6 +72,7 @@ export class PlayComponent implements OnInit {
   public simulateMatch(): void {
     this.simulationMessages = [];
     if (this.canSimulateMatch()) {
+      this.winner = null;
       const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
@@ -106,6 +108,7 @@ export class PlayComponent implements OnInit {
             }
           } else {
             const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
+            this.winner = winner;
             const specialMove: string = this.getSpecialMove(winner);
             const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
             this.simulationMessages.push(winningMessage);
