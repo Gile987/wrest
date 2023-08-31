@@ -47,12 +47,12 @@
       <div *ngFor="let message of simulationMessages" class="message">
         {{ message }}
       </div>
-    </div>
-    <div *ngIf="winner" class="winner-info">
-      <h3>Winner</h3>
-      <div class="winner-details">
-        <img [src]="winner.image" alt="Winner's Image" class="winner-image" />
-        <p>{{ winner.name }}</p>
+      <div *ngIf="winner" class="winner-info">
+        <h3>Winner</h3>
+        <div class="winner-details">
+          <img [src]="winner.image" alt="Winner's Image" class="winner-image" />
+          <p>{{ winner.name }}</p>
+        </div>
       </div>
     </div>
   </div>
