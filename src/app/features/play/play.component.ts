@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TjpwRosterService } from '../../core/services/tjpw-roster.service';
 import { Wrestler } from '../../core/models/wrestler.model';
+import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.service';
 
 @Component({
   selector: 'app-play',
@@ -14,11 +15,22 @@ export class PlayComponent implements OnInit {
   public wrestlerSelectedInColumnA: boolean = false;
   public simulationMessages: string[] = [];
   public winner: Wrestler | null = null;
+  public wrestlingMoves: { name: string }[] = [];
 
-  constructor(private rosterService: TjpwRosterService) {}
+  constructor(
+    private rosterService: TjpwRosterService,
+    private movesService: WrestlingMovesService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeToWrestlers();
+    this.loadWrestlingMoves();
+  }
+
+  private loadWrestlingMoves(): void {
+    this.movesService.getWrestlingMoves().subscribe((moves) => {
+      this.wrestlingMoves = moves;
+    });
   }
 
   private subscribeToWrestlers(): void {
@@ -80,9 +92,7 @@ export class PlayComponent implements OnInit {
         const numTurns: number = this.calculateNumTurns();
         const wrestlingMoves: {
           name: string;
-          damage: number;
-          accuracy: number;
-        }[] = this.getWrestlingMoves();
+        }[] = this.wrestlingMoves;
 
         const simulateTurn = (
           wrestler: Wrestler,
@@ -124,17 +134,6 @@ export class PlayComponent implements OnInit {
     const minTurns: number = 10;
     const maxTurns: number = 20;
     return Math.floor(Math.random() * (maxTurns - minTurns + 1)) + minTurns;
-  }
-
-  private getWrestlingMoves(): {
-    name: string;
-    damage: number;
-    accuracy: number;
-  }[] {
-    return [
-      { name: 'Punch', damage: 10, accuracy: 0.8 },
-      { name: 'Kick', damage: 15, accuracy: 0.7 },
-    ];
   }
 
   private calculateWinner(wrestlerA: Wrestler, wrestlerB: Wrestler): Wrestler {
