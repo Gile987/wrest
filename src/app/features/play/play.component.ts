@@ -138,10 +138,10 @@ export class PlayComponent implements OnInit {
   }
 
   private calculateWinner(wrestlerA: Wrestler, wrestlerB: Wrestler): Wrestler {
-    const seniorityFactor: number =
-      1 +
-      (wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear()) * 0.05;
-    const seniorityFactorSquared: number = seniorityFactor * seniorityFactor;
+    const seniorityYears: number =
+      wrestlerB.debut.getFullYear() - wrestlerA.debut.getFullYear();
+    const seniorityFactor: number = 1 + seniorityYears * 0.05;
+    const seniorityFactorSquared: number = seniorityFactor ** 2;
     const winningProbability: number =
       seniorityFactorSquared / (1 + seniorityFactorSquared);
     return Math.random() < winningProbability ? wrestlerA : wrestlerB;
