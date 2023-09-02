@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TjpwRosterService } from '../../core/services/tjpw-roster.service';
 import { Wrestler } from '../../core/models/wrestler.model';
 import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.service';
+import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 
 @Component({
   selector: 'app-play',
@@ -15,7 +16,7 @@ export class PlayComponent implements OnInit {
   public wrestlerSelectedInColumnA: boolean = false;
   public simulationMessages: string[] = [];
   public winner: Wrestler | null = null;
-  public wrestlingMoves: { name: string }[] = [];
+  public wrestlingMoves: WrestlingMove[] = [];
 
   constructor(
     private rosterService: TjpwRosterService,
