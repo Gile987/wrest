@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TjpwRosterService } from '../../core/services/tjpw-roster.service';
 import { Wrestler } from '../../core/models/wrestler.model';
 import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.service';
 import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-play',
@@ -10,6 +11,12 @@ import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
   styleUrls: ['./play.component.scss'],
 })
 export class PlayComponent implements OnInit {
+  @ViewChild('wrestlerASelect', { static: false }) wrestlerASelect:
+    | MatSelect
+    | undefined;
+  @ViewChild('wrestlerBSelect', { static: false }) wrestlerBSelect:
+    | MatSelect
+    | undefined;
   public wrestlers: Wrestler[] = [];
   public availableWrestlersForB: Wrestler[] = [];
   public selectedWrestlers: (Wrestler | null)[] = [null, null];
@@ -120,6 +127,7 @@ export class PlayComponent implements OnInit {
           } else {
             const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
             this.winner = winner;
+            this.resetSelections();
             const specialMove: string = this.getSpecialMove(winner);
             const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
             this.simulationMessages.push(winningMessage);
@@ -154,5 +162,18 @@ export class PlayComponent implements OnInit {
     return winner.specialMoves[
       Math.floor(Math.random() * winner.specialMoves.length)
     ];
+  }
+
+  private resetSelections(): void {
+    this.selectedWrestlers = [null, null];
+    this.wrestlerSelectedInColumnA = false;
+    this.availableWrestlersForB = [...this.wrestlers];
+
+    if (this.wrestlerASelect) {
+      this.wrestlerASelect.writeValue(null);
+    }
+    if (this.wrestlerBSelect) {
+      this.wrestlerBSelect.writeValue(null);
+    }
   }
 }
