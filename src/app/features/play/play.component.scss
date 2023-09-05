@@ -103,6 +103,17 @@
           margin: 0;
         }
       }
+
+      .clear-button {
+        max-width: 9rem;
+        margin-top: 0.625rem;
+        background-color: $primary-blue;
+        color: $primary-purple;
+        &:hover {
+          background-color: $primary-purple;
+          color: $primary-blue;
+        }
+      }
     }
   }
 }

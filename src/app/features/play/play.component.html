@@ -40,6 +40,7 @@
     </div>
     <app-match-settings
       (settingsSaved)="handleSettingsSaved($event)"
+      *ngIf="!matchStarted"
     ></app-match-settings>
     <button
       mat-button
@@ -61,6 +62,9 @@
         <img [src]="winner.image" alt="Winner's Image" class="winner-image" />
         <p>{{ winner.name }}</p>
       </div>
+      <button mat-raised-button class="clear-button" (click)="clearMessages()">
+        Clear Messages
+      </button>
     </div>
   </div>
 </div>

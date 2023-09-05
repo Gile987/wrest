@@ -28,6 +28,7 @@ export class PlayComponent implements OnInit {
   public simulationMessages: string[] = [];
   public winner: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
+  public matchStarted: boolean = false;
 
   private minTurns: number = 10;
   private maxTurns: number = 20;
@@ -100,6 +101,7 @@ export class PlayComponent implements OnInit {
     this.simulationMessages = [];
     if (this.canSimulateMatch()) {
       this.winner = null;
+      this.matchStarted = true;
       const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
@@ -191,5 +193,11 @@ export class PlayComponent implements OnInit {
   }): void {
     this.minTurns = settings.minRounds;
     this.maxTurns = settings.maxRounds;
+  }
+
+  public clearMessages(): void {
+    this.simulationMessages = [];
+    this.matchStarted = false;
+    this.winner = null;
   }
 }
