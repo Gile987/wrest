@@ -1,1 +1,13 @@
-<p>match-settings works!</p>
+<form [formGroup]="matchSettingsForm">
+  <div class="form-group">
+    <label for="minRounds">Minimum Rounds</label>
+    <input type="number" id="minRounds" formControlName="minRounds" />
+  </div>
+  <div class="form-group">
+    <label for="maxRounds">Maximum Rounds</label>
+    <input type="number" id="maxRounds" formControlName="maxRounds" />
+  </div>
+  <div class="form-group">
+    <button type="button" (click)="saveSettings()">Save Settings</button>
+  </div>
+</form>
