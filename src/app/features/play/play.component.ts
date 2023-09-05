@@ -25,6 +25,9 @@ export class PlayComponent implements OnInit {
   public winner: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
 
+  private readonly minTurns: number = 10;
+  private readonly maxTurns: number = 20;
+
   constructor(
     private rosterService: TjpwRosterService,
     private movesService: WrestlingMovesService
@@ -140,9 +143,10 @@ export class PlayComponent implements OnInit {
   }
 
   private calculateNumTurns(): number {
-    const minTurns: number = 10;
-    const maxTurns: number = 20;
-    return Math.floor(Math.random() * (maxTurns - minTurns + 1)) + minTurns;
+    return (
+      Math.floor(Math.random() * (this.maxTurns - this.minTurns + 1)) +
+      this.minTurns
+    );
   }
 
   private calculateWinner(wrestlerA: Wrestler, wrestlerB: Wrestler): Wrestler {
