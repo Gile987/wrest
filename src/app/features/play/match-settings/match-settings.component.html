@@ -1,0 +1,20 @@
+<form [formGroup]="matchSettingsForm" class="centered-form">
+  <mat-form-field class="form-group">
+    <label for="minRounds">Minimum Rounds</label>
+    <input matInput type="number" id="minRounds" formControlName="minRounds" />
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <label for="maxRounds">Maximum Rounds</label>
+    <input matInput type="number" id="maxRounds" formControlName="maxRounds" />
+  </mat-form-field>
+  <div class="form-group">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="saveSettings()"
+    >
+      Save Settings
+    </button>
+  </div>
+</form>

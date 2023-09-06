@@ -38,6 +38,10 @@
         </mat-form-field>
       </div>
     </div>
+    <app-match-settings
+      (settingsSaved)="handleSettingsSaved($event)"
+      *ngIf="!matchStarted"
+    ></app-match-settings>
     <button
       mat-button
       [disabled]="!canSimulateMatch()"
@@ -51,13 +55,16 @@
       <div *ngFor="let message of simulationMessages" class="message">
         {{ message }}
       </div>
-      <div *ngIf="winner" class="winner-info">
-        <h3>Winner</h3>
-        <div class="winner-details">
-          <img [src]="winner.image" alt="Winner's Image" class="winner-image" />
-          <p>{{ winner.name }}</p>
-        </div>
+    </div>
+    <div *ngIf="winner" class="winner-info">
+      <h3>Winner</h3>
+      <div class="winner-details">
+        <img [src]="winner.image" alt="Winner's Image" class="winner-image" />
+        <p>{{ winner.name }}</p>
       </div>
+      <button mat-raised-button class="clear-button" (click)="clearMessages()">
+        Clear Messages
+      </button>
     </div>
   </div>
 </div>

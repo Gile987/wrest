@@ -4,6 +4,7 @@ import { Wrestler } from '../../core/models/wrestler.model';
 import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.service';
 import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 import { MatSelect } from '@angular/material/select';
+import { MatchSettingsComponent } from './match-settings/match-settings.component';
 
 @Component({
   selector: 'app-play',
@@ -17,6 +18,9 @@ export class PlayComponent implements OnInit {
   @ViewChild('wrestlerBSelect', { static: false }) wrestlerBSelect:
     | MatSelect
     | undefined;
+  @ViewChild(MatchSettingsComponent, { static: false }) matchSettingsComponent:
+    | MatchSettingsComponent
+    | undefined;
   public wrestlers: Wrestler[] = [];
   public availableWrestlersForB: Wrestler[] = [];
   public selectedWrestlers: (Wrestler | null)[] = [null, null];
@@ -24,9 +28,10 @@ export class PlayComponent implements OnInit {
   public simulationMessages: string[] = [];
   public winner: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
+  public matchStarted: boolean = false;
 
-  private readonly minTurns: number = 10;
-  private readonly maxTurns: number = 20;
+  private minTurns: number = 10;
+  private maxTurns: number = 20;
 
   constructor(
     private rosterService: TjpwRosterService,
@@ -96,6 +101,7 @@ export class PlayComponent implements OnInit {
     this.simulationMessages = [];
     if (this.canSimulateMatch()) {
       this.winner = null;
+      this.matchStarted = true;
       const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
@@ -179,5 +185,19 @@ export class PlayComponent implements OnInit {
     if (this.wrestlerBSelect) {
       this.wrestlerBSelect.writeValue(null);
     }
+  }
+
+  public handleSettingsSaved(settings: {
+    minRounds: number;
+    maxRounds: number;
+  }): void {
+    this.minTurns = settings.minRounds;
+    this.maxTurns = settings.maxRounds;
+  }
+
+  public clearMessages(): void {
+    this.simulationMessages = [];
+    this.matchStarted = false;
+    this.winner = null;
   }
 }
