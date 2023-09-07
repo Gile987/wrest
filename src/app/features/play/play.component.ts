@@ -42,12 +42,6 @@ export class PlayComponent implements OnInit {
   ngOnInit(): void {
     this.subscribeToWrestlers();
     this.loadWrestlingMoves();
-    this.loadMatchSettings();
-  }
-
-  private loadMatchSettings(): void {
-    this.minRounds = this.matchSettingsService.getMinRounds();
-    this.maxRounds = this.matchSettingsService.getMaxRounds();
   }
 
   private loadWrestlingMoves(): void {
