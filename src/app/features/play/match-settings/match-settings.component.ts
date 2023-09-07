@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatchSettingsService } from 'src/app/core/services/match-settings.service';
 
 @Component({
   selector: 'app-match-settings',
@@ -13,10 +14,19 @@ export class MatchSettingsComponent implements OnInit {
     maxRounds: number;
   }> = new EventEmitter<{ minRounds: number; maxRounds: number }>();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private matchSettingsService: MatchSettingsService
+  ) {
     this.matchSettingsForm = this.formBuilder.group({
-      minRounds: [10, [Validators.required, Validators.min(1)]],
-      maxRounds: [20, [Validators.required, Validators.min(1)]],
+      minRounds: [
+        this.matchSettingsService.getMinRounds(),
+        [Validators.required, Validators.min(1)],
+      ],
+      maxRounds: [
+        this.matchSettingsService.getMaxRounds(),
+        [Validators.required, Validators.min(1)],
+      ],
     });
   }
 
