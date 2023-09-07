@@ -5,6 +5,7 @@ import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.ser
 import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 import { MatSelect } from '@angular/material/select';
 import { MatchSettingsComponent } from './match-settings/match-settings.component';
+import { MatchSettingsService } from 'src/app/core/services/match-settings.service';
 
 @Component({
   selector: 'app-play',
@@ -29,18 +30,24 @@ export class PlayComponent implements OnInit {
   public winner: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
   public matchStarted: boolean = false;
-
-  private minTurns: number = 10;
-  private maxTurns: number = 20;
+  private minRounds!: number;
+  private maxRounds!: number;
 
   constructor(
     private rosterService: TjpwRosterService,
-    private movesService: WrestlingMovesService
+    private movesService: WrestlingMovesService,
+    private matchSettingsService: MatchSettingsService
   ) {}
 
   ngOnInit(): void {
     this.subscribeToWrestlers();
     this.loadWrestlingMoves();
+    this.loadMatchSettings();
+  }
+
+  private loadMatchSettings(): void {
+    this.minRounds = this.matchSettingsService.getMinRounds();
+    this.maxRounds = this.matchSettingsService.getMaxRounds();
   }
 
   private loadWrestlingMoves(): void {
@@ -150,8 +157,8 @@ export class PlayComponent implements OnInit {
 
   private calculateNumTurns(): number {
     return (
-      Math.floor(Math.random() * (this.maxTurns - this.minTurns + 1)) +
-      this.minTurns
+      Math.floor(Math.random() * (this.maxRounds - this.minRounds + 1)) +
+      this.minRounds
     );
   }
 
@@ -191,8 +198,8 @@ export class PlayComponent implements OnInit {
     minRounds: number;
     maxRounds: number;
   }): void {
-    this.minTurns = settings.minRounds;
-    this.maxTurns = settings.maxRounds;
+    this.minRounds = settings.minRounds;
+    this.maxRounds = settings.maxRounds;
   }
 
   public clearMessages(): void {
