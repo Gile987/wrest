@@ -41,6 +41,10 @@ export class MatchSettingsComponent implements OnInit {
         minRounds: minRoundsControl.value,
         maxRounds: maxRoundsControl.value,
       };
+      this.matchSettingsService.setMatchSettings(
+        selectedSettings.minRounds,
+        selectedSettings.maxRounds
+      );
       this.settingsSaved.emit(selectedSettings);
     }
   }
