@@ -5,6 +5,7 @@ import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.ser
 import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 import { MatSelect } from '@angular/material/select';
 import { MatchSettingsComponent } from './match-settings/match-settings.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-play',
@@ -31,6 +32,7 @@ export class PlayComponent implements OnInit {
   public matchStarted: boolean = false;
   private minRounds!: number;
   private maxRounds!: number;
+  private componentDestroyed$ = new Subject<void>();
 
   constructor(
     private rosterService: TjpwRosterService,
@@ -42,17 +44,27 @@ export class PlayComponent implements OnInit {
     this.loadWrestlingMoves();
   }
 
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
+  }
+
   private loadWrestlingMoves(): void {
-    this.movesService.getWrestlingMoves().subscribe((moves) => {
-      this.wrestlingMoves = moves;
-    });
+    this.movesService
+      .getWrestlingMoves()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((moves) => {
+        this.wrestlingMoves = moves;
+      });
   }
 
   private subscribeToWrestlers(): void {
-    this.rosterService.wrestlers$.subscribe((wrestlers: Wrestler[]) => {
-      this.wrestlers = wrestlers;
-      this.availableWrestlersForB = [...wrestlers];
-    });
+    this.rosterService.wrestlers$
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((wrestlers: Wrestler[]) => {
+        this.wrestlers = wrestlers;
+        this.availableWrestlersForB = [...wrestlers];
+      });
   }
 
   public selectWrestler(wrestlerId: number, wrestlerIndex: number): void {
