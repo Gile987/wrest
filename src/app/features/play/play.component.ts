@@ -5,7 +5,6 @@ import { WrestlingMovesService } from 'src/app/core/services/wrestling-moves.ser
 import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 import { MatSelect } from '@angular/material/select';
 import { MatchSettingsComponent } from './match-settings/match-settings.component';
-import { MatchSettingsService } from 'src/app/core/services/match-settings.service';
 
 @Component({
   selector: 'app-play',
@@ -35,8 +34,7 @@ export class PlayComponent implements OnInit {
 
   constructor(
     private rosterService: TjpwRosterService,
-    private movesService: WrestlingMovesService,
-    private matchSettingsService: MatchSettingsService
+    private movesService: WrestlingMovesService
   ) {}
 
   ngOnInit(): void {
