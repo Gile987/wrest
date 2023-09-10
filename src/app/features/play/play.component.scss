@@ -26,8 +26,9 @@
     }
 
     .col {
+      flex: 0 0 auto;
       padding: 0.6rem;
-      margin: 0.6rem;
+      margin-top: 0.6rem;
       background-color: $primary-gray;
       border-radius: 0.3125rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
