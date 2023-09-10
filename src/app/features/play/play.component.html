@@ -18,6 +18,9 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="health-bar">
+          <div class="health-bar-inner" [style.width.%]="wrestlerAHealth"></div>
+        </div>
       </div>
       <div class="col">
         <mat-form-field>
@@ -36,6 +39,9 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="health-bar">
+          <div class="health-bar-inner" [style.width.%]="wrestlerBHealth"></div>
+        </div>
       </div>
     </div>
     <app-match-settings

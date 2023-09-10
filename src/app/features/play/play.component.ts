@@ -33,6 +33,8 @@ export class PlayComponent implements OnInit {
   private minRounds!: number;
   private maxRounds!: number;
   private componentDestroyed$ = new Subject<void>();
+  public wrestlerAHealth: number = 100;
+  public wrestlerBHealth: number = 100;
 
   constructor(
     private rosterService: TjpwRosterService,
@@ -113,6 +115,8 @@ export class PlayComponent implements OnInit {
     if (this.canSimulateMatch()) {
       this.winner = null;
       this.matchStarted = true;
+      this.wrestlerAHealth = 100;
+      this.wrestlerBHealth = 100;
       const wrestlerA: Wrestler | null = this.selectedWrestlers[0];
       const wrestlerB: Wrestler | null = this.selectedWrestlers[1];
 
@@ -134,6 +138,12 @@ export class PlayComponent implements OnInit {
 
             const message: string = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
             this.simulationMessages.push(message);
+
+            if (opponent === wrestlerA) {
+              this.wrestlerAHealth -= 10;
+            } else {
+              this.wrestlerBHealth -= 10;
+            }
 
             if (shouldPerformAdditionalMove) {
               setTimeout(() => {
