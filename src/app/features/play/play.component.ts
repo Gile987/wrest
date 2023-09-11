@@ -35,6 +35,8 @@ export class PlayComponent implements OnInit {
   private componentDestroyed$ = new Subject<void>();
   public wrestlerAHealth: number = 100;
   public wrestlerBHealth: number = 100;
+  public wrestlerAHealthBarClass: string = 'high-health';
+  public wrestlerBHealthBarClass: string = 'high-health';
 
   constructor(
     private rosterService: TjpwRosterService,
@@ -141,8 +143,14 @@ export class PlayComponent implements OnInit {
 
             if (opponent === wrestlerA) {
               this.wrestlerAHealth -= 10;
+              this.wrestlerAHealthBarClass = this.getHealthBarColorClass(
+                this.wrestlerAHealth
+              );
             } else {
               this.wrestlerBHealth -= 10;
+              this.wrestlerBHealthBarClass = this.getHealthBarColorClass(
+                this.wrestlerBHealth
+              );
             }
 
             if (shouldPerformAdditionalMove) {
@@ -157,7 +165,7 @@ export class PlayComponent implements OnInit {
           } else {
             const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
             this.winner = winner;
-            this.resetSelections();
+            // this.resetSelections();
             const specialMove: string = this.getSpecialMove(winner);
             const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
             this.simulationMessages.push(winningMessage);
@@ -220,6 +228,7 @@ export class PlayComponent implements OnInit {
     this.simulationMessages = [];
     this.matchStarted = false;
     this.winner = null;
+    this.resetSelections();
   }
 
   public getHealthBarColorClass(health: number): string {
