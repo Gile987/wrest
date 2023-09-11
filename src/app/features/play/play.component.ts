@@ -221,4 +221,14 @@ export class PlayComponent implements OnInit {
     this.matchStarted = false;
     this.winner = null;
   }
+
+  public getHealthBarColorClass(health: number): string {
+    if (health <= 30) {
+      return 'low-health';
+    } else if (health > 30 && health <= 70) {
+      return 'medium-health';
+    } else {
+      return 'high-health';
+    }
+  }
 }

@@ -21,10 +21,6 @@
       margin-bottom: 1.25rem;
     }
 
-    .row {
-      margin-top: 1.25rem;
-    }
-
     .col {
       flex: 0 0 auto;
       padding: 0.6rem;
@@ -42,7 +38,7 @@
       }
 
       .health-bar {
-        width: 100%;
+        width: 95%;
         height: 20px;
         background-color: #ccc;
         border: 1px solid #000;
@@ -55,6 +51,13 @@
         width: 100%;
         background-color: green;
         transition: width 0.5s;
+      }
+
+      .health-bar-inner.low-health {
+        background-color: red;
+      }
+      .health-bar-inner.medium-health {
+        background-color: orange;
       }
     }
 

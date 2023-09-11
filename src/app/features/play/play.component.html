@@ -19,7 +19,11 @@
           </mat-select>
         </mat-form-field>
         <div class="health-bar" *ngIf="selectedWrestlers[0]">
-          <div class="health-bar-inner" [style.width.%]="wrestlerAHealth"></div>
+          <div
+            class="health-bar-inner"
+            [style.width.%]="wrestlerAHealth"
+            [ngClass]="getHealthBarColorClass(wrestlerAHealth)"
+          ></div>
         </div>
       </div>
       <div class="col">
@@ -40,7 +44,11 @@
           </mat-select>
         </mat-form-field>
         <div class="health-bar" *ngIf="selectedWrestlers[1]">
-          <div class="health-bar-inner" [style.width.%]="wrestlerBHealth"></div>
+          <div
+            class="health-bar-inner"
+            [style.width.%]="wrestlerBHealth"
+            [ngClass]="getHealthBarColorClass(wrestlerAHealth)"
+          ></div>
         </div>
       </div>
     </div>
