@@ -63,7 +63,7 @@
 
     button {
       margin: 0 auto;
-      width: 25%;
+      width: auto;
       margin-top: 1.25rem;
       background-color: $primary-gray;
       color: $primary-blue;
@@ -92,4 +92,8 @@
 
 ::ng-deep .mat-select-value {
   color: $text-color;
+}
+
+.winner {
+  margin: 0 auto;
 }
