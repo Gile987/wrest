@@ -247,6 +247,8 @@ export class PlayComponent implements OnInit {
     this.matchStarted = false;
     this.winner = null;
     this.resetSelections();
+    this.wrestlerAHealth = 100;
+    this.wrestlerBHealth = 100;
   }
 
   public getHealthBarColorClass(health: number): string {
