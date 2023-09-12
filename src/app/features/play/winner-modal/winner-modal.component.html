@@ -1,0 +1,10 @@
+<div class="winner-modal">
+  <h3>Winner</h3>
+  <div class="winner-details">
+    <img [src]="data.winner.image" alt="Winner's Image" class="winner-image" />
+    <p>{{ data.winner.name }}</p>
+  </div>
+  <button mat-raised-button class="close-button" (click)="closeModal()">
+    Close
+  </button>
+</div>
