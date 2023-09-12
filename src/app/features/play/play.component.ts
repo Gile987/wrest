@@ -164,7 +164,7 @@ export class PlayComponent implements OnInit {
   }
 
   private simulateSingleTurn(wrestler: Wrestler, opponent: Wrestler): void {
-    const move =
+    const move: WrestlingMove =
       this.wrestlingMoves[
         Math.floor(Math.random() * this.wrestlingMoves.length)
       ];
