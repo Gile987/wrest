@@ -28,6 +28,7 @@ export class PlayComponent implements OnInit {
   public wrestlerSelectedInColumnA: boolean = false;
   public simulationMessages: string[] = [];
   public winner: Wrestler | null = null;
+  public loser: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
   public matchStarted: boolean = false;
   private minRounds!: number;
@@ -116,6 +117,7 @@ export class PlayComponent implements OnInit {
     this.simulationMessages = [];
     if (this.canSimulateMatch()) {
       this.winner = null;
+      this.loser = null;
       this.matchStarted = true;
       this.wrestlerAHealth = 100;
       this.wrestlerBHealth = 100;
@@ -134,24 +136,8 @@ export class PlayComponent implements OnInit {
           index: number
         ): void => {
           if (index < numTurns) {
-            const move =
-              wrestlingMoves[Math.floor(Math.random() * wrestlingMoves.length)];
+            this.simulateSingleTurn(wrestler, opponent);
             const shouldPerformAdditionalMove: boolean = Math.random() < 0.3;
-
-            const message: string = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
-            this.simulationMessages.push(message);
-
-            if (opponent === wrestlerA) {
-              this.wrestlerAHealth -= 10;
-              this.wrestlerAHealthBarClass = this.getHealthBarColorClass(
-                this.wrestlerAHealth
-              );
-            } else {
-              this.wrestlerBHealth -= 10;
-              this.wrestlerBHealthBarClass = this.getHealthBarColorClass(
-                this.wrestlerBHealth
-              );
-            }
 
             if (shouldPerformAdditionalMove) {
               setTimeout(() => {
@@ -165,7 +151,7 @@ export class PlayComponent implements OnInit {
           } else {
             const winner: Wrestler = this.calculateWinner(wrestlerA, wrestlerB);
             this.winner = winner;
-            // this.resetSelections();
+            this.loser = winner === wrestlerA ? wrestlerB : wrestlerA;
             const specialMove: string = this.getSpecialMove(winner);
             const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
             this.simulationMessages.push(winningMessage);
@@ -174,6 +160,27 @@ export class PlayComponent implements OnInit {
 
         simulateTurn(wrestlerA, wrestlerB, 0);
       }
+    }
+  }
+
+  private simulateSingleTurn(wrestler: Wrestler, opponent: Wrestler): void {
+    const move =
+      this.wrestlingMoves[
+        Math.floor(Math.random() * this.wrestlingMoves.length)
+      ];
+    const message: string = `${wrestler.name} performs ${move.name} on ${opponent.name}`;
+    this.simulationMessages.push(message);
+
+    if (opponent === this.selectedWrestlers[0]) {
+      this.wrestlerAHealth -= 10;
+      this.wrestlerAHealthBarClass = this.getHealthBarColorClass(
+        this.wrestlerAHealth
+      );
+    } else {
+      this.wrestlerBHealth -= 10;
+      this.wrestlerBHealthBarClass = this.getHealthBarColorClass(
+        this.wrestlerBHealth
+      );
     }
   }
 
