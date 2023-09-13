@@ -62,7 +62,8 @@
     }
 
     button {
-      width: 100%;
+      margin: 0 auto;
+      width: auto;
       margin-top: 1.25rem;
       background-color: $primary-gray;
       color: $primary-blue;
@@ -86,58 +87,13 @@
     .message {
       margin-bottom: 0.5rem;
     }
-
-    .winner-info {
-      margin-top: 1.25rem;
-      padding: 0.625rem;
-      border: 2px solid $primary-blue;
-      border-radius: 0.3125rem;
-      background-color: $primary-gray;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-
-      .winner-details {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .winner-image {
-          width: 6.25rem;
-          height: 6.25rem;
-          border: 2px solid $primary-blue;
-          background-color: rgba($primary-purple, 0.8);
-          border-radius: 50%;
-          margin-bottom: 0.625rem;
-        }
-
-        p {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: $text-color;
-          background-color: $primary-purple;
-          padding: 0.3125rem 0.625rem;
-          border-radius: 0.3125rem;
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      .clear-button {
-        max-width: 9rem;
-        margin-top: 0.625rem;
-        background-color: $primary-blue;
-        color: $primary-purple;
-        &:hover {
-          background-color: $primary-purple;
-          color: $primary-blue;
-        }
-      }
-    }
   }
 }
 
 ::ng-deep .mat-select-value {
   color: $text-color;
+}
+
+.winner {
+  margin: 0 auto;
 }

@@ -6,6 +6,8 @@ import { WrestlingMove } from 'src/app/core/models/wrestling-moves.model';
 import { MatSelect } from '@angular/material/select';
 import { MatchSettingsComponent } from './match-settings/match-settings.component';
 import { Subject, takeUntil } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { WinnerModalComponent } from './winner-modal/winner-modal.component';
 
 @Component({
   selector: 'app-play',
@@ -41,7 +43,8 @@ export class PlayComponent implements OnInit {
 
   constructor(
     private rosterService: TjpwRosterService,
-    private movesService: WrestlingMovesService
+    private movesService: WrestlingMovesService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -155,12 +158,20 @@ export class PlayComponent implements OnInit {
             const specialMove: string = this.getSpecialMove(winner);
             const winningMessage: string = `${winner.name} performs the special move ${specialMove} and wins the match!`;
             this.simulationMessages.push(winningMessage);
+            this.openWinnerModal(winner);
           }
         };
 
         simulateTurn(wrestlerA, wrestlerB, 0);
       }
     }
+  }
+
+  openWinnerModal(winner: any) {
+    console.log('winner', winner);
+    this.dialog.open(WinnerModalComponent, {
+      data: { winner: winner },
+    });
   }
 
   private simulateSingleTurn(wrestler: Wrestler, opponent: Wrestler): void {
@@ -236,6 +247,8 @@ export class PlayComponent implements OnInit {
     this.matchStarted = false;
     this.winner = null;
     this.resetSelections();
+    this.wrestlerAHealth = 100;
+    this.wrestlerBHealth = 100;
   }
 
   public getHealthBarColorClass(health: number): string {
