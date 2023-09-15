@@ -33,13 +33,13 @@ export class PlayComponent implements OnInit {
   public loser: Wrestler | null = null;
   public wrestlingMoves: WrestlingMove[] = [];
   public matchStarted: boolean = false;
-  private minRounds!: number;
-  private maxRounds!: number;
-  private componentDestroyed$ = new Subject<void>();
   public wrestlerAHealth: number = 100;
   public wrestlerBHealth: number = 100;
   public wrestlerAHealthBarClass: string = 'high-health';
   public wrestlerBHealthBarClass: string = 'high-health';
+  private minRounds!: number;
+  private maxRounds!: number;
+  private componentDestroyed$ = new Subject<void>();
 
   constructor(
     private rosterService: TjpwRosterService,
