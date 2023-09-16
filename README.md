@@ -32,3 +32,8 @@ npm run start
 ```
 
 The app will be available at http://localhost:4200/ in your web browser.
+
+Login info:
+
+- email: john@example.com
+- password: password
