@@ -1,27 +1,34 @@
-# Wrest
+# TJPW App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+The TJPW App is an application that showcases TJPW (Tokyo Joshi Pro Wrestling) wrestlers, provides information about upcoming shows, allows users to simulate matches, and offers a login feature.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Browse and view information about TJPW wrestlers.
+- Stay updated with details about upcoming TJPW shows.
+- Enjoy simulating wrestling matches for fun.
+- User authentication for a personalized experience.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To run the TJPW App locally, follow these simple steps:
 
-## Build
+1. Clone this repository to your local machine:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+git clone https://github.com/yourusername/wrest.git
 
-## Running unit tests
+cd wrest
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+npm install
+```
 
-## Running end-to-end tests
+## Usage
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Once you've completed the installation, you can start the app by running:
 
-## Further help
+```bash
+npm run start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The app will be available at http://localhost:4200/ in your web browser.
