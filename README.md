@@ -37,3 +37,9 @@ Login info:
 
 - email: john@example.com
 - password: password
+
+### TODO:
+
+- Registering would be nice :3
+- Add more wrestlers
+- Add more shows
