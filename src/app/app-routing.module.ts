@@ -4,31 +4,35 @@ import { HomeComponent } from './features/home/home.component';
 import { UserGuard } from './core/guards/user.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
-const rosterLoadChildren = () =>
-  import('./features/roster/roster.module').then((m) => m.RosterModule);
-const loginLoadChildren = () =>
-  import('./core/components/login/login.module').then((m) => m.LoginModule);
-const registerLoadChildren = () =>
-  import('./core/components/register/register.module').then(
-    (m) => m.RegisterModule
-  );
-const showsLoadChildren = () =>
-  import('./features/shows/shows.module').then((m) => m.ShowsModule);
-
-const playLoadChildren = () =>
-  import('./features/play/play.module').then((m) => m.PlayModule);
+const lazyLoadedModules = {
+  roster: () =>
+    import('./features/roster/roster.module').then((m) => m.RosterModule),
+  login: () =>
+    import('./core/components/login/login.module').then((m) => m.LoginModule),
+  register: () =>
+    import('./core/components/register/register.module').then(
+      (m) => m.RegisterModule
+    ),
+  shows: () =>
+    import('./features/shows/shows.module').then((m) => m.ShowsModule),
+  play: () => import('./features/play/play.module').then((m) => m.PlayModule),
+};
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'roster', loadChildren: rosterLoadChildren },
-  { path: 'login', loadChildren: loginLoadChildren, canActivate: [UserGuard] },
   {
-    path: 'register',
-    loadChildren: registerLoadChildren,
+    path: 'login',
+    loadChildren: lazyLoadedModules.login,
     canActivate: [UserGuard],
   },
-  { path: 'shows', loadChildren: showsLoadChildren },
-  { path: 'play', loadChildren: playLoadChildren },
+  {
+    path: 'register',
+    loadChildren: lazyLoadedModules.register,
+    canActivate: [UserGuard],
+  },
+  { path: 'roster', loadChildren: lazyLoadedModules.roster },
+  { path: 'shows', loadChildren: lazyLoadedModules.shows },
+  { path: 'play', loadChildren: lazyLoadedModules.play },
   { path: '**', component: NotFoundComponent },
 ];
 
