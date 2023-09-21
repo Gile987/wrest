@@ -36,6 +36,9 @@
       background-color: rgba($primary-purple, 0.8);
       border-radius: 50%;
       margin-bottom: 0.625rem;
+      animation: rotateAndZoom 5s linear infinite;
+      transform-origin: center;
+
     }
 
     p {
@@ -58,5 +61,17 @@
       background-color: $primary-purple;
       color: $primary-blue;
     }
+  }
+}
+
+@keyframes rotateAndZoom {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(-60deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(60deg) scale(1);
   }
 }
